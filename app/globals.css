@@ -7,9 +7,34 @@
   --color-ink: #0e0f0c;
   --color-paper: #fafafa;
   --color-paper-soft: #f1f0ec;
+  --color-card: #ffffff;
   --color-line: #0e0f0c1f;
   --color-accent: #ff4100;
   --color-accent-soft: #ff41000f;
+}
+
+/*
+ * Тёмная тема для новой версии сайта (/v2 — Telnoff Media PROduction).
+ * Переопределяем CSS-переменные только внутри .v2-root, поэтому текущая
+ * светлая версия на / остаётся без изменений.
+ */
+.v2-root {
+  --color-ink: #f4f3f1;         /* основной текст на тёмном */
+  --color-paper: #141414;       /* фон — тёмно-серый, не чёрный */
+  --color-paper-soft: #1b1b1b;  /* чередующиеся секции */
+  --color-card: #1f1f1f;        /* поверхности карточек */
+  --color-line: #ffffff1a;      /* границы на тёмном */
+  --color-accent: #ff4100;
+  --color-accent-soft: #ff41001f;
+
+  font-size: 1.0625rem;         /* крупнее и читаемее (17px) */
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.v2-root ::selection {
+  background: var(--color-accent);
+  color: #fff;
 }
 
 * {
