@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Montserrat, Golos_Text } from "next/font/google";
 import Header from "@/components/v2/Header";
 import HeroSection from "@/components/v2/HeroSection";
 import ShowreelSection from "@/components/v2/ShowreelSection";
@@ -9,6 +10,9 @@ import ProcessSection from "@/components/v2/ProcessSection";
 import FAQSection from "@/components/v2/FAQSection";
 import FinalCTASection from "@/components/v2/FinalCTASection";
 import Footer from "@/components/v2/Footer";
+
+const display = Montserrat({ subsets: ["latin", "cyrillic"], variable: "--font-display" });
+const body = Golos_Text({ subsets: ["latin", "cyrillic"], variable: "--font-body" });
 
 export const metadata: Metadata = {
   title: "Telnoff Media PROduction — профессиональная видеосъёмка для брендов, бизнеса и экспертов",
@@ -25,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function V2Home() {
   return (
-    <div className="v2-root min-h-screen bg-paper text-ink">
+    <div className={`v2-root min-h-screen bg-paper text-ink ${display.variable} ${body.variable}`}>
       <Header />
       <main>
         <HeroSection />

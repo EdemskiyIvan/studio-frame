@@ -1,28 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Play } from "lucide-react";
 import PlaceholderMedia from "../PlaceholderMedia";
-import CornerBrackets from "../CornerBrackets";
 
 export default function ShowreelSection() {
   const [playing, setPlaying] = useState(false);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [hover, setHover] = useState(false);
+  const fieldRef = useRef<HTMLButtonElement>(null);
+  const center = useRef({ x: 0, y: 0 });
+
+  const update = (e: React.MouseEvent) => {
+    const rect = fieldRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  const enter = (e: React.MouseEvent) => {
+    const rect = fieldRef.current?.getBoundingClientRect();
+    if (rect) center.current = { x: rect.width / 2, y: rect.height / 2 };
+    setHover(true);
+    update(e);
+  };
 
   return (
     <section id="showreel" className="bg-paper-soft px-5 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+        <div className="mb-10">
           <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink sm:text-6xl">
-            Шоурил
+            Шоурил 2026
           </h2>
-          <p className="max-w-md text-base leading-relaxed text-ink/55 sm:text-lg">
-            Краткая нарезка наших работ — реклама, мероприятия, интервью, концерты и трансляции
+          <p className="mt-3 text-base text-ink/55 sm:text-lg">
+            Собрали лучшее за год в одном ролике
           </p>
         </div>
 
-        <div className="relative mt-12 overflow-hidden rounded-2xl border border-line bg-black">
+        <div className="relative overflow-hidden rounded-2xl bg-black">
           {playing ? (
-            // Собственный встроенный плеер — без рекламы. Положите файл в /public/showreel.mp4
             <video
               className="aspect-video w-full bg-black"
               controls
@@ -35,9 +50,13 @@ export default function ShowreelSection() {
             </video>
           ) : (
             <button
+              ref={fieldRef}
               type="button"
               onClick={() => setPlaying(true)}
-              className="group relative block w-full"
+              onMouseMove={update}
+              onMouseEnter={enter}
+              onMouseLeave={() => setHover(false)}
+              className="block w-full"
               aria-label="Запустить шоурил"
             >
               <PlaceholderMedia
@@ -46,15 +65,24 @@ export default function ShowreelSection() {
                 alt="Превью шоурила Telnoff Media PROduction"
                 className="aspect-video w-full"
               />
-              <span className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/20" />
-              <CornerBrackets />
-              <span className="absolute inset-0 flex items-center justify-center">
-                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-accent text-white shadow-lg transition-transform duration-300 group-hover:scale-110 sm:h-24 sm:w-24">
-                  <Play size={30} className="ml-1" fill="currentColor" />
+
+              {/* По центру, при наведении подпрыгивает и с инерцией бегает за курсором */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute top-1/2 left-1/2 z-10 transition-transform duration-[450ms] ease-out will-change-transform"
+                style={{
+                  transform: hover
+                    ? `translate3d(${pos.x - center.current.x}px, ${pos.y - center.current.y}px, 0) translate(-50%, -50%)`
+                    : "translate(-50%, -50%)",
+                }}
+              >
+                <span
+                  className={`flex h-16 w-16 items-center justify-center rounded-full bg-accent text-white shadow-lg sm:h-20 sm:w-20 ${
+                    hover ? "animate-[play-pop_450ms_ease-out]" : ""
+                  }`}
+                >
+                  <Play size={26} className="ml-1" fill="currentColor" />
                 </span>
-              </span>
-              <span className="absolute bottom-5 left-5 rounded-full bg-black/50 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
-                Смотреть шоурил · 2:00
               </span>
             </button>
           )}
