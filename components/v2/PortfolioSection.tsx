@@ -24,10 +24,10 @@ const CATEGORIES = [
 ];
 
 const WORKS: Work[] = [
+  { slug: "vk-fest", title: "VK Fest", category: "Мероприятия", tag: "Мероприятие", variant: "rose" },
   { slug: "epdm", title: "Завод ЭПДМ", category: "Реклама и промо", tag: "Промышленное видео", variant: "olive" },
   { slug: "range-rover", title: "Range Rover LUMMA", category: "Реклама и промо", tag: "Автопромо", variant: "ink" },
   { slug: "klass-engineering", title: "Класс Инжиниринг", category: "Корпоративные", tag: "Корпоративный фильм", variant: "slate" },
-  { slug: "vk-fest", title: "VK Fest", category: "Мероприятия", tag: "Мероприятие", variant: "rose" },
   { slug: "mot", title: "Концерт Мота", category: "Концерты", tag: "Концертная съёмка", variant: "ink" },
   { slug: "megamade", title: "МЕГАМЕЙД", category: "Клипы", tag: "Рекламный клип", variant: "gold" },
   { slug: "gazprom", title: "Газпром межрегионгаз", category: "Корпоративные", tag: "Фильм о компании", variant: "slate" },

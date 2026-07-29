@@ -52,11 +52,14 @@
 
 html {
   scroll-behavior: smooth;
+  /* тёмный фон под оверскролл (rubber-band на macOS), сайт весь тёмный */
+  background-color: #141414;
+  color-scheme: dark;
 }
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-paper);
+  background: #141414;
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

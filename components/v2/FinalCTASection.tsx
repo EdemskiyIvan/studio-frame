@@ -33,7 +33,7 @@ export default function FinalCTASection() {
           </h2>
           <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/60">
             Расскажите, какой контент вам нужен, — предложим формат, структуру съёмки
-            и&nbsp;примерный план подготовки.
+            и&nbsp;примерный план подготовки
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -74,47 +74,44 @@ export default function FinalCTASection() {
             <div className="flex min-h-[320px] flex-col items-center justify-center text-center">
               <h3 className="text-2xl font-medium text-ink">Спасибо!</h3>
               <p className="mt-2 max-w-xs text-sm leading-relaxed text-ink/60">
-                Мы получили вашу заявку и&nbsp;скоро свяжемся с&nbsp;вами, чтобы обсудить съёмку.
+                Мы получили вашу заявку и&nbsp;скоро свяжемся с&nbsp;вами, чтобы обсудить съёмку
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="name" className="text-xs font-medium text-ink/60">
-                  Имя
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  className="rounded-xl border border-line bg-paper px-3.5 py-3.5 text-sm text-ink outline-none transition-colors focus:border-accent"
-                />
-              </div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+              <h3 className="text-2xl font-semibold tracking-[-0.01em] text-ink">
+                Оставить заявку
+              </h3>
+              <p className="-mt-1 text-sm leading-relaxed text-ink/55">
+                Ваш персональный менеджер свяжется с&nbsp;вами в&nbsp;течение 15&nbsp;минут
+              </p>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                placeholder="Имя"
+                aria-label="Имя"
+                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+              />
 
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="contact" className="text-xs font-medium text-ink/60">
-                  Телефон или мессенджер
-                </label>
-                <input
-                  id="contact"
-                  name="contact"
-                  type="text"
-                  required
-                  className="rounded-xl border border-line bg-paper px-3.5 py-3.5 text-sm text-ink outline-none transition-colors focus:border-accent"
-                />
-              </div>
+              <input
+                id="contact"
+                name="contact"
+                type="text"
+                required
+                placeholder="Телефон или мессенджер"
+                aria-label="Телефон или мессенджер"
+                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+              />
 
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="projectType" className="text-xs font-medium text-ink/60">
-                  Тип проекта
-                </label>
-                <select
+              <select
+                aria-label="Тип проекта"
                   id="projectType"
                   name="projectType"
                   required
                   defaultValue=""
-                  className="appearance-none rounded-xl border border-line bg-paper px-3.5 py-3.5 pr-11 text-sm text-ink outline-none transition-colors focus:border-accent"
+                  className="appearance-none rounded-xl border border-line bg-paper px-3.5 py-4 pr-11 text-sm font-medium text-ink outline-none transition-colors focus:border-accent"
                   style={{
                     backgroundImage:
                       "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")",
@@ -131,37 +128,31 @@ export default function FinalCTASection() {
                       {type}
                     </option>
                   ))}
-                </select>
-              </div>
+              </select>
 
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="comment" className="text-xs font-medium text-ink/60">
-                  Комментарий
-                </label>
-                <textarea
-                  id="comment"
-                  name="comment"
-                  rows={3}
-                  className="resize-none rounded-xl border border-line bg-paper px-3.5 py-3.5 text-sm text-ink outline-none transition-colors focus:border-accent"
-                />
-              </div>
+              <textarea
+                id="comment"
+                name="comment"
+                rows={3}
+                placeholder="Комментарий"
+                aria-label="Комментарий"
+                className="resize-none rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+              />
 
               {/* Согласие на обработку персональных данных */}
-              <label htmlFor="consent" className="flex items-start gap-3 text-xs leading-relaxed text-ink/55">
-                <input
-                  id="consent"
-                  name="consent"
-                  type="checkbox"
-                  required
-                  className="mt-0.5 h-4 w-4 shrink-0 accent-accent"
+              <label htmlFor="consent" className="mt-1 flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-ink/55">
+                <input id="consent" name="consent" type="checkbox" required className="peer sr-only" />
+                <span
+                  aria-hidden
+                  className="mt-0.5 h-5 w-5 shrink-0 rounded-[5px] border border-line bg-paper bg-center bg-no-repeat transition-colors peer-checked:border-accent peer-checked:bg-accent peer-checked:bg-[length:12px] peer-checked:bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22white%22%20stroke-width=%223.5%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpolyline%20points=%2220%206%209%2017%204%2012%22/%3E%3C/svg%3E')]"
                 />
                 <span>
                   Согласен с{" "}
-                  <a href="#" className="text-accent underline underline-offset-2 hover:text-ink">
+                  <a href="#" className="text-ink/75 underline underline-offset-2 transition-colors hover:text-ink">
                     обработкой персональных данных
                   </a>{" "}
                   и{" "}
-                  <a href="#" className="text-accent underline underline-offset-2 hover:text-ink">
+                  <a href="#" className="text-ink/75 underline underline-offset-2 transition-colors hover:text-ink">
                     политикой конфиденциальности
                   </a>
                 </span>
@@ -169,7 +160,7 @@ export default function FinalCTASection() {
 
               <button
                 type="submit"
-                className="mt-2 rounded-md bg-accent px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-[#e63900]"
+                className="mt-2 w-fit self-start rounded-md bg-accent px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-[#e63900]"
               >
                 Отправить заявку
               </button>

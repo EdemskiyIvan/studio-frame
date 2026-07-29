@@ -21,7 +21,7 @@ export default function Footer() {
             </a>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/50">
               Видеопродакшн полного цикла: рекламная съёмка, интервью, мероприятия, трансляции,
-              лекции, подкасты, концерты и ИИ-аватары. СПб, Москва.
+              лекции, подкасты, концерты и ИИ-аватары. СПб, Москва
             </p>
           </div>
 
@@ -49,7 +49,7 @@ export default function Footer() {
           <p className="text-xs text-ink/40">
             © {new Date().getFullYear()} Telnoff Media PROduction
           </p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2">
+          <div className="flex flex-wrap gap-x-8 gap-y-2">
             <a href="#" className="text-xs text-ink/40 transition-colors hover:text-ink/70">
               Обработка персональных данных
             </a>

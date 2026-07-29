@@ -55,7 +55,7 @@ export default function LeadModal() {
 
   return (
     <div
-      className="v2-root fixed inset-0 z-[110] flex items-end justify-center bg-black/70 backdrop-blur-sm [animation:fade-in_0.2s_ease] sm:items-center sm:p-4"
+      className="fixed inset-0 z-[110] flex items-end justify-center bg-black/30 backdrop-blur-md [animation:fade-in_0.2s_ease] sm:items-center sm:p-4"
       onClick={() => setOpen(false)}
     >
       <div
@@ -75,7 +75,7 @@ export default function LeadModal() {
           <div className="flex min-h-[280px] flex-col items-center justify-center text-center">
             <h3 className="text-2xl font-semibold text-ink">Спасибо!</h3>
             <p className="mt-2 max-w-xs text-sm leading-relaxed text-ink/60">
-              Мы получили вашу заявку и&nbsp;скоро свяжемся с&nbsp;вами, чтобы обсудить съёмку.
+              Мы получили вашу заявку и&nbsp;скоро свяжемся с&nbsp;вами, чтобы обсудить съёмку
             </p>
           </div>
         ) : (
@@ -87,46 +87,37 @@ export default function LeadModal() {
               Оставить заявку
             </h3>
             <p className="mt-1.5 text-sm leading-relaxed text-ink/55">
-              Свяжемся с&nbsp;вами, уточним задачу и&nbsp;предложим подходящий формат съёмки.
+              Свяжемся с&nbsp;вами, уточним задачу и&nbsp;предложим подходящий формат съёмки
             </p>
 
-            <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="m-name" className="text-xs font-medium text-ink/60">
-                  Имя
-                </label>
-                <input
-                  id="m-name"
-                  name="name"
-                  type="text"
-                  required
-                  className="rounded-xl border border-line bg-paper px-3.5 py-3.5 text-sm text-ink outline-none transition-colors focus:border-accent"
-                />
-              </div>
+            <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-2">
+              <input
+                id="m-name"
+                name="name"
+                type="text"
+                required
+                placeholder="Имя"
+                aria-label="Имя"
+                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+              />
 
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="m-contact" className="text-xs font-medium text-ink/60">
-                  Телефон или мессенджер
-                </label>
-                <input
-                  id="m-contact"
-                  name="contact"
-                  type="text"
-                  required
-                  className="rounded-xl border border-line bg-paper px-3.5 py-3.5 text-sm text-ink outline-none transition-colors focus:border-accent"
-                />
-              </div>
+              <input
+                id="m-contact"
+                name="contact"
+                type="text"
+                required
+                placeholder="Телефон или мессенджер"
+                aria-label="Телефон или мессенджер"
+                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+              />
 
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="m-projectType" className="text-xs font-medium text-ink/60">
-                  Тип проекта
-                </label>
-                <select
-                  id="m-projectType"
+              <select
+                aria-label="Тип проекта"
+                id="m-projectType"
                   name="projectType"
                   required
                   defaultValue=""
-                  className="appearance-none rounded-xl border border-line bg-paper px-3.5 py-3.5 pr-11 text-sm text-ink outline-none transition-colors focus:border-accent"
+                  className="appearance-none rounded-xl border border-line bg-paper px-3.5 py-4 pr-11 text-sm font-medium text-ink outline-none transition-colors focus:border-accent"
                   style={{
                     backgroundImage:
                       "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")",
@@ -143,27 +134,33 @@ export default function LeadModal() {
                       {type}
                     </option>
                   ))}
-                </select>
-              </div>
+              </select>
+
+              <textarea
+                id="m-comment"
+                name="comment"
+                rows={3}
+                placeholder="Комментарий"
+                aria-label="Комментарий"
+                className="resize-none rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+              />
 
               <label
                 htmlFor="m-consent"
-                className="flex items-start gap-3 text-xs leading-relaxed text-ink/55"
+                className="mt-1 flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-ink/55"
               >
-                <input
-                  id="m-consent"
-                  name="consent"
-                  type="checkbox"
-                  required
-                  className="mt-0.5 h-4 w-4 shrink-0 accent-accent"
+                <input id="m-consent" name="consent" type="checkbox" required className="peer sr-only" />
+                <span
+                  aria-hidden
+                  className="mt-0.5 h-5 w-5 shrink-0 rounded-[5px] border border-line bg-paper bg-center bg-no-repeat transition-colors peer-checked:border-accent peer-checked:bg-accent peer-checked:bg-[length:12px] peer-checked:bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22white%22%20stroke-width=%223.5%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpolyline%20points=%2220%206%209%2017%204%2012%22/%3E%3C/svg%3E')]"
                 />
                 <span>
                   Согласен с{" "}
-                  <a href="#" className="text-accent underline underline-offset-2 hover:text-ink">
+                  <a href="#" className="text-ink/75 underline underline-offset-2 transition-colors hover:text-ink">
                     обработкой персональных данных
                   </a>{" "}
                   и{" "}
-                  <a href="#" className="text-accent underline underline-offset-2 hover:text-ink">
+                  <a href="#" className="text-ink/75 underline underline-offset-2 transition-colors hover:text-ink">
                     политикой конфиденциальности
                   </a>
                 </span>

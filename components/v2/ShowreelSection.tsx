@@ -45,7 +45,7 @@ export default function ShowreelSection() {
               poster="/showreel-cover.jpg"
             >
               <source src="/showreel.mp4" type="video/mp4" />
-              Ваш браузер не поддерживает воспроизведение видео.
+              Ваш браузер не поддерживает воспроизведение видео
             </video>
           ) : (
             <button

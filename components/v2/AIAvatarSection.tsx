@@ -1,4 +1,5 @@
 import { Sparkles, ArrowRight, Repeat, Clock, TrendingUp } from "lucide-react";
+import LeadButton from "./LeadButton";
 
 const BENEFITS = [
   {
@@ -48,7 +49,7 @@ export default function AIAvatarSection() {
             ИИ-услуга позволяет многократно использовать вашего цифрового двойника для создания
             новых видеоматериалов. Достаточно один раз провести оцифровку — дальше новые ролики
             генерируются автоматически, без вашего личного участия. Это экономит время и
-            увеличивает объёмы производства контента.
+            увеличивает объёмы производства контента
           </p>
 
           <div className="mt-8 flex flex-col gap-4">
@@ -65,13 +66,10 @@ export default function AIAvatarSection() {
             ))}
           </div>
 
-          <a
-            href="#cta"
-            className="group mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-medium text-white transition-colors hover:bg-[#e63900]"
-          >
+          <LeadButton className="group mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-medium text-white transition-colors hover:bg-[#e63900]">
             Заказать ИИ-аватар
             <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" />
-          </a>
+          </LeadButton>
         </div>
       </div>
     </section>

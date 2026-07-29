@@ -96,10 +96,9 @@ export default function ServicesSection() {
 
         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map(({ variant, title, text, src, alt }) => (
-            <a
+            <LeadButton
               key={title}
-              href="#cta"
-              className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-card transition-colors hover:border-accent/50"
+              className="group flex w-full flex-col overflow-hidden rounded-2xl border border-line bg-card text-left transition-colors hover:border-accent/50"
             >
               {/* Крупное фото сверху — главный акцент карточки */}
               <div className="relative overflow-hidden">
@@ -121,7 +120,7 @@ export default function ServicesSection() {
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
                 </span>
               </div>
-            </a>
+            </LeadButton>
           ))}
 
           {/* 9-я карточка — абстрактный CTA «не нашли услугу?» */}
@@ -144,7 +143,7 @@ export default function ServicesSection() {
                 Не нашли нужную услугу?
               </h3>
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink/60">
-                Расскажите задачу — подберём формат съёмки под вас и предложим решение.
+                Расскажите задачу — подберём формат съёмки под вас и предложим решение
               </p>
 
               <LeadButton className="mt-7 inline-flex items-center justify-center gap-2 rounded-md bg-accent px-7 py-4 text-base font-medium text-white transition-colors hover:bg-[#e63900]">

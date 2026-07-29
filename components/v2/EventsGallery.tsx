@@ -14,11 +14,25 @@ const VARIANTS = ["slate", "rose", "olive", "clay", "gold", "ink"] as const;
 export default function EventsGallery() {
   const [active, setActive] = useState(0);
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [inView, setInView] = useState(false);
 
   // Единый rAF-таймер: он же двигает прогресс-бар (через DOM-ref, без ре-рендеров),
   // он же переключает фото — поэтому рассинхрона и лагов нет
+  const sectionRef = useRef<HTMLElement>(null);
   const barRef = useRef<HTMLSpanElement>(null);
   const progress = useRef(0);
+
+  // Старт автолистания только когда блок появился на экране
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.35 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const resetProgress = useCallback(() => {
     progress.current = 0;
@@ -31,7 +45,7 @@ export default function EventsGallery() {
     const tick = (now: number) => {
       const dt = now - last;
       last = now;
-      if (lightbox === null) {
+      if (inView && lightbox === null) {
         progress.current += dt / DURATION;
         if (progress.current >= 1) {
           progress.current = 0;
@@ -43,7 +57,7 @@ export default function EventsGallery() {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [lightbox]);
+  }, [inView, lightbox]);
 
   const selectActive = useCallback(
     (i: number) => {
@@ -74,7 +88,11 @@ export default function EventsGallery() {
   }, [lightbox, go]);
 
   return (
-    <section id="events" className="overflow-hidden bg-paper-soft px-5 py-24 sm:px-8 sm:py-32">
+    <section
+      ref={sectionRef}
+      id="events"
+      className="overflow-hidden bg-paper-soft px-5 py-24 sm:px-8 sm:py-32"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-center text-center">
           <h2 className="mx-auto text-4xl font-semibold tracking-[-0.02em] text-ink sm:text-6xl">
