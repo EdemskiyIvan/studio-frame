@@ -47,7 +47,11 @@ const STEPS = [
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="bg-paper-soft px-5 py-24 sm:px-8 sm:py-32">
+    <section
+      id="process"
+      className="px-5 py-24 sm:px-8 sm:py-32"
+      style={{ backgroundColor: "#141414" }}
+    >
       <div className="mx-auto max-w-5xl">
         <div className="max-w-2xl">
           <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink sm:text-6xl">

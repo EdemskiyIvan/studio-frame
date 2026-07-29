@@ -1,11 +1,9 @@
 import { Sparkles, ArrowRight, Repeat, Clock, TrendingUp } from "lucide-react";
-import PlaceholderMedia from "../PlaceholderMedia";
-import CornerBrackets from "../CornerBrackets";
 
 const BENEFITS = [
   {
     icon: Repeat,
-    title: "Одна оцифровка — множество роликов",
+    title: "Одна оцифровка — тысячи роликов",
     text: "Достаточно один раз оцифровать вас или вашего эксперта",
   },
   {
@@ -24,31 +22,29 @@ export default function AIAvatarSection() {
   return (
     <section id="ai-avatar" className="scroll-mt-20 bg-paper-soft px-5 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
-        <div className="relative order-last overflow-hidden rounded-2xl border border-line lg:order-first">
-          <PlaceholderMedia
-            variant="ink"
-            src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1100&q=80"
-            alt="Цифровой двойник эксперта — ИИ-аватар"
-            className="aspect-[4/5] w-full sm:aspect-[4/3] lg:aspect-[4/5]"
+        <div className="order-last lg:order-first">
+          <video
+            src="/ai-avatar.mp4?v=5"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden
+            className="aspect-[4/5] w-full rounded-2xl object-cover"
           />
-          <CornerBrackets />
-          <span className="absolute top-5 left-5 inline-flex items-center gap-1.5 rounded-full bg-accent px-3.5 py-1.5 text-xs font-medium text-white">
-            <Sparkles size={13} />
-            ИИ-технология
-          </span>
         </div>
 
         <div>
           <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent-soft px-4 py-1.5 text-xs font-medium text-accent">
             <Sparkles size={13} />
-            Новая услуга · ИИ Аватар
+            ИИ Аватар
           </span>
 
           <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink sm:text-5xl">
             Создаём цифрового двойника вас или вашего эксперта
           </h2>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/65">
+          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-ink/60">
             ИИ-услуга позволяет многократно использовать вашего цифрового двойника для создания
             новых видеоматериалов. Достаточно один раз провести оцифровку — дальше новые ролики
             генерируются автоматически, без вашего личного участия. Это экономит время и

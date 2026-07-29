@@ -71,6 +71,30 @@ body {
   }
 }
 
+/* Выезд bottom-sheet формы снизу */
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Появление попапа на десктопе */
+@keyframes modal-pop {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 /* «Прыжок» play-кнопки шоурила при наведении */
 @keyframes play-pop {
   0% {

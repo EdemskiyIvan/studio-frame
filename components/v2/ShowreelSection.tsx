@@ -2,7 +2,6 @@
 
 import { useRef, useState } from "react";
 import { Play } from "lucide-react";
-import PlaceholderMedia from "../PlaceholderMedia";
 
 export default function ShowreelSection() {
   const [playing, setPlaying] = useState(false);
@@ -43,7 +42,7 @@ export default function ShowreelSection() {
               controls
               autoPlay
               playsInline
-              poster="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=80"
+              poster="/showreel-cover.jpg"
             >
               <source src="/showreel.mp4" type="video/mp4" />
               Ваш браузер не поддерживает воспроизведение видео.
@@ -59,12 +58,18 @@ export default function ShowreelSection() {
               className="block w-full"
               aria-label="Запустить шоурил"
             >
-              <PlaceholderMedia
-                variant="ink"
-                src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=80"
-                alt="Превью шоурила Telnoff Media PROduction"
-                className="aspect-video w-full"
-              />
+              {/* Живая обложка — тихо крутится зациклённый muted-превью, постер как fallback */}
+              <video
+                className="aspect-video w-full bg-black object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/showreel-cover.jpg"
+              >
+                <source src="/showreel-preview.mp4" type="video/mp4" />
+              </video>
+              <span className="absolute inset-0 bg-black/25" />
 
               {/* По центру, при наведении подпрыгивает и с инерцией бегает за курсором */}
               <span

@@ -64,12 +64,6 @@ export default function FinalCTASection() {
             </a>
           </div>
 
-          <div className="mt-10 rounded-xl border border-line bg-card p-6">
-            <p className="text-sm leading-relaxed text-ink/60">
-              Работаем в&nbsp;СПб, Москве и&nbsp;других городах. Монтаж в&nbsp;день съёмки,
-              публикация материалов день в&nbsp;день, стабильные онлайн-трансляции.
-            </p>
-          </div>
         </div>
 
         <div
@@ -85,11 +79,6 @@ export default function FinalCTASection() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <p className="text-sm leading-relaxed text-ink/60">
-                Оставьте контакты — свяжемся с&nbsp;вами, уточним задачу и&nbsp;предложим
-                подходящий формат съёмки.
-              </p>
-
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="name" className="text-xs font-medium text-ink/60">
                   Имя
@@ -160,8 +149,14 @@ export default function FinalCTASection() {
                   className="mt-0.5 h-4 w-4 shrink-0 accent-accent"
                 />
                 <span>
-                  Я&nbsp;согласен на&nbsp;обработку персональных данных в&nbsp;соответствии
-                  с&nbsp;политикой конфиденциальности.
+                  Согласен с{" "}
+                  <a href="#" className="text-accent underline underline-offset-2 hover:text-ink">
+                    обработкой персональных данных
+                  </a>{" "}
+                  и{" "}
+                  <a href="#" className="text-accent underline underline-offset-2 hover:text-ink">
+                    политикой конфиденциальности
+                  </a>
                 </span>
               </label>
 
