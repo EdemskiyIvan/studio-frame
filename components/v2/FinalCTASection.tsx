@@ -38,7 +38,7 @@ export default function FinalCTASection() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="tel:+70000000000"
+              href="tel:+79935832312"
               className="inline-flex items-center justify-center gap-2 rounded-md border border-line px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/40 hover:bg-white/[0.04]"
             >
               <Phone size={16} className="text-accent" />

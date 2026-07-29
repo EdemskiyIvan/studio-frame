@@ -39,7 +39,7 @@ export default function FAQSection() {
 
   return (
     <section id="faq" className="bg-paper-soft px-5 py-24 sm:px-8 sm:py-32">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-5xl">
         <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink sm:text-6xl">
           Вопрос — ответ
         </h2>
