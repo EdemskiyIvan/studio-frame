@@ -160,7 +160,7 @@ export default function FinalCTASection() {
 
               <button
                 type="submit"
-                className="mt-2 w-full rounded-md bg-accent px-8 py-3.5 text-sm font-medium text-white transition-colors hover:bg-[#e63900]"
+                className="mt-5 w-full rounded-md bg-accent px-8 py-3.5 text-sm font-medium text-white transition-colors hover:bg-[#e63900]"
               >
                 Отправить заявку
               </button>
