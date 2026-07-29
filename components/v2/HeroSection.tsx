@@ -16,7 +16,7 @@ export default function HeroSection() {
         loop
         playsInline
         aria-hidden
-        className="pointer-events-none absolute top-1/2 right-[6%] z-0 w-[68vw] max-w-none -translate-y-1/2 object-contain opacity-90 mix-blend-lighten lg:w-[56vw]"
+        className="pointer-events-none absolute top-1/2 right-[-4%] z-0 w-[68vw] max-w-none -translate-y-1/2 object-contain opacity-90 mix-blend-lighten lg:w-[56vw]"
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl">
@@ -26,7 +26,7 @@ export default function HeroSection() {
           </h1>
 
           <p
-            className="mt-2 flex flex-wrap items-baseline gap-x-3 text-4xl font-bold tracking-[-0.03em] sm:text-5xl lg:text-[56px] lg:leading-[1.02]"
+            className="mt-2 flex flex-wrap items-center gap-x-3 text-4xl font-bold tracking-[-0.03em] sm:text-5xl lg:text-[56px] lg:leading-[1.02]"
             style={{ fontFamily: "var(--font-display), sans-serif" }}
           >
             <span className="text-ink">для</span>

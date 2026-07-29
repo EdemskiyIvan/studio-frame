@@ -88,7 +88,7 @@ export default function FinalCTASection() {
                   name="name"
                   type="text"
                   required
-                  className="rounded-md border border-line bg-paper px-3.5 py-2.5 text-sm text-ink outline-none transition-colors focus:border-accent"
+                  className="rounded-xl border border-line bg-paper px-3.5 py-3.5 text-sm text-ink outline-none transition-colors focus:border-accent"
                 />
               </div>
 
@@ -101,7 +101,7 @@ export default function FinalCTASection() {
                   name="contact"
                   type="text"
                   required
-                  className="rounded-md border border-line bg-paper px-3.5 py-2.5 text-sm text-ink outline-none transition-colors focus:border-accent"
+                  className="rounded-xl border border-line bg-paper px-3.5 py-3.5 text-sm text-ink outline-none transition-colors focus:border-accent"
                 />
               </div>
 
@@ -114,7 +114,14 @@ export default function FinalCTASection() {
                   name="projectType"
                   required
                   defaultValue=""
-                  className="rounded-md border border-line bg-paper px-3.5 py-2.5 text-sm text-ink outline-none transition-colors focus:border-accent"
+                  className="appearance-none rounded-xl border border-line bg-paper px-3.5 py-3.5 pr-11 text-sm text-ink outline-none transition-colors focus:border-accent"
+                  style={{
+                    backgroundImage:
+                      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "right 16px center",
+                    backgroundSize: "16px",
+                  }}
                 >
                   <option value="" disabled>
                     Выберите тип проекта
@@ -135,7 +142,7 @@ export default function FinalCTASection() {
                   id="comment"
                   name="comment"
                   rows={3}
-                  className="resize-none rounded-md border border-line bg-paper px-3.5 py-2.5 text-sm text-ink outline-none transition-colors focus:border-accent"
+                  className="resize-none rounded-xl border border-line bg-paper px-3.5 py-3.5 text-sm text-ink outline-none transition-colors focus:border-accent"
                 />
               </div>
 

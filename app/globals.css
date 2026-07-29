@@ -95,6 +95,16 @@ body {
   }
 }
 
+/* Прогресс-бар автопрокрутки слайдера фото */
+@keyframes progress-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 /* «Прыжок» play-кнопки шоурила при наведении */
 @keyframes play-pop {
   0% {

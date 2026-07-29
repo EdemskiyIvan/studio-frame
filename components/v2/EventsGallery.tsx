@@ -1,24 +1,55 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import PlaceholderMedia from "../PlaceholderMedia";
 
-const COUNT = 16;
+const COUNT = 15;
+const DURATION = 3800; // мс на одно фото
 const PHOTOS = Array.from({ length: COUNT }, (_, i) => `/events/event-${String(i + 1).padStart(2, "0")}.jpg`);
 const VARIANTS = ["slate", "rose", "olive", "clay", "gold", "ink"] as const;
 
 export default function EventsGallery() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
-  // Авто-прокрутка: следующая фотка «выпрыгивает» по одной
+  // Единый rAF-таймер: он же двигает прогресс-бар (через DOM-ref, без ре-рендеров),
+  // он же переключает фото — поэтому рассинхрона и лагов нет
+  const barRef = useRef<HTMLSpanElement>(null);
+  const progress = useRef(0);
+
+  const resetProgress = useCallback(() => {
+    progress.current = 0;
+    if (barRef.current) barRef.current.style.width = "0%";
+  }, []);
+
   useEffect(() => {
-    if (paused || lightbox !== null) return;
-    const id = setInterval(() => setActive((a) => (a + 1) % COUNT), 2600);
-    return () => clearInterval(id);
-  }, [paused, lightbox]);
+    let raf = 0;
+    let last = performance.now();
+    const tick = (now: number) => {
+      const dt = now - last;
+      last = now;
+      if (lightbox === null) {
+        progress.current += dt / DURATION;
+        if (progress.current >= 1) {
+          progress.current = 0;
+          setActive((a) => (a + 1) % COUNT);
+        }
+        if (barRef.current) barRef.current.style.width = `${Math.min(progress.current, 1) * 100}%`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [lightbox]);
+
+  const selectActive = useCallback(
+    (i: number) => {
+      resetProgress();
+      setActive(i);
+    },
+    [resetProgress],
+  );
 
   const go = useCallback(
     (dir: number) => setLightbox((cur) => (cur === null ? cur : (cur + dir + COUNT) % COUNT)),
@@ -54,11 +85,7 @@ export default function EventsGallery() {
       </div>
 
       {/* Бесконечный авто-слайдер (coverflow) — активное фото на всю ширину блока */}
-      <div
-        className="relative mt-14 h-[240px] sm:h-[520px]"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
+      <div className="relative mt-14 h-[240px] sm:h-[520px]">
         {PHOTOS.map((src, i) => {
           let rel = (i - active + COUNT) % COUNT;
           if (rel > COUNT / 2) rel -= COUNT;
@@ -73,7 +100,7 @@ export default function EventsGallery() {
             <button
               key={src}
               type="button"
-              onClick={() => (isActive ? setLightbox(i) : setActive(i))}
+              onClick={() => (isActive ? setLightbox(i) : selectActive(i))}
               aria-label={`Фото с мероприятия ${i + 1}`}
               className="absolute top-1/2 left-1/2 w-[min(92vw,900px)] appearance-none border-0 bg-transparent p-0 shadow-none outline-none ring-0"
               style={{
@@ -103,18 +130,22 @@ export default function EventsGallery() {
         })}
       </div>
 
-      {/* Точки-индикаторы */}
-      <div className="mt-10 flex justify-center gap-2">
+      {/* Индикаторы с прогресс-баром автопрокрутки */}
+      <div className="mt-10 flex items-center justify-center gap-2">
         {PHOTOS.map((_, i) => (
           <button
             key={i}
             type="button"
             aria-label={`Перейти к фото ${i + 1}`}
-            onClick={() => setActive(i)}
-            className={`h-1.5 rounded-full transition-all ${
-              i === active ? "w-6 bg-accent" : "w-1.5 bg-white/20 hover:bg-white/40"
+            onClick={() => selectActive(i)}
+            className={`h-1.5 overflow-hidden rounded-full transition-all ${
+              i === active ? "w-8 bg-white/20" : "w-1.5 bg-white/20 hover:bg-white/40"
             }`}
-          />
+          >
+            {i === active && (
+              <span ref={barRef} className="block h-full w-0 rounded-full bg-accent" />
+            )}
+          </button>
         ))}
       </div>
 

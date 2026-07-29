@@ -1,51 +1,6 @@
-import type { Metadata } from "next";
-import { Montserrat, Golos_Text } from "next/font/google";
-import Header from "@/components/v2/Header";
-import HeroSection from "@/components/v2/HeroSection";
-import ShowreelSection from "@/components/v2/ShowreelSection";
-import ServicesSection from "@/components/v2/ServicesSection";
-import AIAvatarSection from "@/components/v2/AIAvatarSection";
-import PortfolioSection from "@/components/v2/PortfolioSection";
-import EventsGallery from "@/components/v2/EventsGallery";
-import ProcessSection from "@/components/v2/ProcessSection";
-import FAQSection from "@/components/v2/FAQSection";
-import FinalCTASection from "@/components/v2/FinalCTASection";
-import Footer from "@/components/v2/Footer";
-import LeadModal from "@/components/v2/LeadModal";
+import { redirect } from "next/navigation";
 
-const display = Montserrat({ subsets: ["latin", "cyrillic"], variable: "--font-display" });
-const body = Golos_Text({ subsets: ["latin", "cyrillic"], variable: "--font-body" });
-
-export const metadata: Metadata = {
-  title: "Telnoff Media PROduction — профессиональная видеосъёмка для брендов, бизнеса и экспертов",
-  description:
-    "Видео- и фотопродакшн: рекламная съёмка, интервью, бизнес-форумы, видеотрансляции, лекции, подкасты, концерты и ИИ-аватары. Экспресс-монтаж в день съёмки, стабильные трансляции. СПб, Москва.",
-  openGraph: {
-    title: "Telnoff Media PROduction — видеопродакшн полного цикла",
-    description:
-      "Профессиональная видеосъёмка для брендов, бизнеса и экспертов. Монтаж в день съёмки, стабильные онлайн-трансляции, ИИ-аватары.",
-    locale: "ru_RU",
-    type: "website",
-  },
-};
-
-export default function V2Home() {
-  return (
-    <div className={`v2-root min-h-screen bg-paper text-ink ${display.variable} ${body.variable}`}>
-      <Header />
-      <main>
-        <HeroSection />
-        <ShowreelSection />
-        <ServicesSection />
-        <AIAvatarSection />
-        <PortfolioSection />
-        <EventsGallery />
-        <ProcessSection />
-        <FAQSection />
-        <FinalCTASection />
-      </main>
-      <Footer />
-      <LeadModal />
-    </div>
-  );
+// Редизайн переехал на главную — /v2 ведёт на корень
+export default function V2Redirect() {
+  redirect("/");
 }
