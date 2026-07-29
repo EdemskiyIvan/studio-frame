@@ -6,7 +6,9 @@ import PlaceholderMedia from "../PlaceholderMedia";
 
 const COUNT = 15;
 const DURATION = 3800; // мс на одно фото
-const PHOTOS = Array.from({ length: COUNT }, (_, i) => `/events/photo-${String(i + 1).padStart(2, "0")}.jpg`);
+// Порядок показа: концертный кадр (11) первым, дальше остальные
+const ORDER = [11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15];
+const PHOTOS = ORDER.map((n) => `/events/photo-${String(n).padStart(2, "0")}.jpg`);
 const VARIANTS = ["slate", "rose", "olive", "clay", "gold", "ink"] as const;
 
 export default function EventsGallery() {
