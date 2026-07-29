@@ -63,7 +63,7 @@ export default function LeadModal() {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative max-h-[92vh] w-full overflow-y-auto rounded-t-2xl border border-line bg-card p-6 [animation:sheet-up_0.3s_cubic-bezier(0.22,1,0.36,1)] sm:max-w-lg sm:rounded-2xl sm:p-8 sm:[animation:modal-pop_0.2s_ease]"
+        className="relative max-h-[90dvh] w-full overflow-y-auto overscroll-contain rounded-t-2xl border border-line bg-card p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] [animation:sheet-up_0.3s_cubic-bezier(0.22,1,0.36,1)] sm:max-h-[92vh] sm:max-w-lg sm:rounded-2xl sm:p-8 sm:pb-8 sm:[animation:modal-pop_0.2s_ease]"
       >
         <button
           type="button"
@@ -101,7 +101,7 @@ export default function LeadModal() {
                 required
                 placeholder="Имя"
                 aria-label="Имя"
-                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-base font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
               />
 
               <input
@@ -111,7 +111,7 @@ export default function LeadModal() {
                 required
                 placeholder="Телефон или мессенджер"
                 aria-label="Телефон или мессенджер"
-                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-base font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
               />
 
               <select
@@ -121,7 +121,7 @@ export default function LeadModal() {
                   required
                   value={projectType}
                   onChange={(e) => setProjectType(e.target.value)}
-                  className="appearance-none rounded-xl border border-line bg-paper px-3.5 py-4 pr-11 text-sm font-medium text-ink outline-none transition-colors focus:border-accent"
+                  className="appearance-none rounded-xl border border-line bg-paper px-3.5 py-4 pr-11 text-base font-medium text-ink outline-none transition-colors focus:border-accent"
                   style={{
                     backgroundImage:
                       "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")",
@@ -146,7 +146,7 @@ export default function LeadModal() {
                 rows={3}
                 placeholder="Комментарий"
                 aria-label="Комментарий"
-                className="resize-none rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+                className="resize-none rounded-xl border border-line bg-paper px-3.5 py-4 text-base font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
               />
 
               <label

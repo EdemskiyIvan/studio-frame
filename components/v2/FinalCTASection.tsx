@@ -31,15 +31,15 @@ export default function FinalCTASection() {
           <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink sm:text-6xl">
             Обсудим вашу съёмку?
           </h2>
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/60">
+          <p className="mt-3 max-w-md text-lg leading-relaxed text-ink/60 sm:mt-6">
             Расскажите, какой контент вам нужен, — предложим формат, структуру съёмки
             и&nbsp;примерный план подготовки
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-nowrap gap-2 sm:flex-wrap sm:gap-3">
             <a
               href="tel:+79935832312"
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-line px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/40 hover:bg-white/[0.04]"
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-line bg-card px-3 py-3.5 text-sm font-medium text-ink/80 transition-colors hover:border-accent/50 hover:text-ink sm:flex-none sm:px-5"
             >
               <Phone size={16} className="text-accent" />
               Позвонить
@@ -48,7 +48,7 @@ export default function FinalCTASection() {
               href="https://t.me/telnoffmedia"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-line px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/40 hover:bg-white/[0.04]"
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-line bg-card px-3 py-3.5 text-sm font-medium text-ink/80 transition-colors hover:border-accent/50 hover:text-ink sm:flex-none sm:px-5"
             >
               <Send size={16} className="text-accent" />
               Telegram
@@ -57,7 +57,7 @@ export default function FinalCTASection() {
               href="https://max.ru/telnoffmedia"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-line px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-ink/40 hover:bg-white/[0.04]"
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-line bg-card px-3 py-3.5 text-sm font-medium text-ink/80 transition-colors hover:border-accent/50 hover:text-ink sm:flex-none sm:px-5"
             >
               <MessageSquare size={16} className="text-accent" />
               MAX
@@ -92,7 +92,7 @@ export default function FinalCTASection() {
                 required
                 placeholder="Имя"
                 aria-label="Имя"
-                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-base font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
               />
 
               <input
@@ -102,7 +102,7 @@ export default function FinalCTASection() {
                 required
                 placeholder="Телефон или мессенджер"
                 aria-label="Телефон или мессенджер"
-                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+                className="rounded-xl border border-line bg-paper px-3.5 py-4 text-base font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
               />
 
               <select
@@ -111,7 +111,7 @@ export default function FinalCTASection() {
                   name="projectType"
                   required
                   defaultValue=""
-                  className="appearance-none rounded-xl border border-line bg-paper px-3.5 py-4 pr-11 text-sm font-medium text-ink outline-none transition-colors focus:border-accent"
+                  className="appearance-none rounded-xl border border-line bg-paper px-3.5 py-4 pr-11 text-base font-medium text-ink outline-none transition-colors focus:border-accent"
                   style={{
                     backgroundImage:
                       "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")",
@@ -136,7 +136,7 @@ export default function FinalCTASection() {
                 rows={3}
                 placeholder="Комментарий"
                 aria-label="Комментарий"
-                className="resize-none rounded-xl border border-line bg-paper px-3.5 py-4 text-sm font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
+                className="resize-none rounded-xl border border-line bg-paper px-3.5 py-4 text-base font-medium text-ink outline-none transition-colors placeholder:text-ink/40 focus:border-accent"
               />
 
               {/* Согласие на обработку персональных данных */}

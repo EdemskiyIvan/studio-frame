@@ -41,7 +41,7 @@ export default function Footer() {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-line bg-card px-5 py-3 text-sm font-medium text-ink/80 transition-colors hover:border-accent/50 hover:text-ink"
+                  className="inline-flex items-center gap-2 rounded-xl border border-line bg-card px-5 py-3 text-sm font-medium text-ink/80 transition-colors hover:border-accent/50 hover:text-accent"
                 >
                   <Icon size={16} className="text-accent" />
                   {label}
@@ -80,18 +80,18 @@ export default function Footer() {
           <p className="text-xs text-ink/40">
             © {new Date().getFullYear()} Telnoff Media PROduction
           </p>
-          <div className="flex flex-wrap gap-x-8 gap-y-2">
-            <a href="#" className="text-xs text-ink/40 transition-colors hover:text-ink/70">
+          <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-2">
+            <a href="#" className="text-xs text-ink/40 transition-colors hover:text-accent">
               Обработка персональных данных
             </a>
-            <a href="#" className="text-xs text-ink/40 transition-colors hover:text-ink/70">
+            <a href="#" className="text-xs text-ink/40 transition-colors hover:text-accent">
               Политика конфиденциальности
             </a>
             <a
               href="https://montas.ru"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-ink/40 transition-colors hover:text-ink/70"
+              className="text-xs text-ink/40 transition-colors hover:text-accent"
             >
               Разработка сайта — Montas
             </a>

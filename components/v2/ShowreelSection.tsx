@@ -81,12 +81,21 @@ export default function ShowreelSection() {
                     : "translate(-50%, -50%)",
                 }}
               >
-                <span
-                  className={`flex h-16 w-16 items-center justify-center rounded-full bg-accent text-white shadow-lg sm:h-20 sm:w-20 ${
-                    hover ? "animate-[play-pop_450ms_ease-out]" : ""
-                  }`}
-                >
-                  <Play size={26} className="ml-1" fill="currentColor" />
+                <span className="flex flex-col items-center gap-2.5">
+                  <span
+                    className={`flex h-16 w-16 items-center justify-center rounded-full bg-accent text-white shadow-lg sm:h-20 sm:w-20 ${
+                      hover ? "animate-[play-pop_450ms_ease-out]" : ""
+                    }`}
+                  >
+                    <Play size={26} className="ml-1" fill="currentColor" />
+                  </span>
+                  <span
+                    className={`text-sm font-semibold whitespace-nowrap text-white [text-shadow:0_1px_6px_rgba(0,0,0,0.6)] transition-opacity duration-300 ${
+                      hover ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    Смотреть шоурил
+                  </span>
                 </span>
               </span>
             </button>

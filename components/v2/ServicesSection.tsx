@@ -97,7 +97,7 @@ export default function ServicesSection() {
           </h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink/55 sm:whitespace-nowrap sm:text-lg">
             Подбираем формат под задачу — от рекламной съёмки и интервью
-            <br />
+            <br className="hidden sm:inline" />{" "}
             до трансляций, подкастов и концертов
           </p>
         </div>

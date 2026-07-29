@@ -148,6 +148,24 @@ export default function EventsGallery() {
             </button>
           );
         })}
+
+        {/* Стрелки навигации — на мобилке */}
+        <button
+          type="button"
+          aria-label="Предыдущее фото"
+          onClick={() => selectActive((active - 1 + COUNT) % COUNT)}
+          className="absolute top-1/2 left-3 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 lg:hidden"
+        >
+          <ChevronLeft size={22} />
+        </button>
+        <button
+          type="button"
+          aria-label="Следующее фото"
+          onClick={() => selectActive((active + 1) % COUNT)}
+          className="absolute top-1/2 right-3 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 lg:hidden"
+        >
+          <ChevronRight size={22} />
+        </button>
       </div>
 
       {/* Индикаторы с прогресс-баром автопрокрутки */}

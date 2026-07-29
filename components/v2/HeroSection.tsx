@@ -8,17 +8,6 @@ export default function HeroSection() {
       className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-5 pt-28 pb-14 sm:px-8"
       style={{ backgroundColor: "#141414" }}
     >
-      {/* Орбита-глобус: фоновое видео справа, отдельным слоем — не влияет на текст */}
-      <video
-        src="/hero-orbit.mp4?v=5"
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 right-[-4%] z-0 w-[75vw] max-w-none -translate-y-1/2 object-contain opacity-90 mix-blend-lighten lg:w-[62vw]"
-      />
-
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="max-w-2xl">
           <h1 className="text-4xl leading-[1.12] font-bold tracking-[-0.03em] text-ink sm:text-5xl lg:text-[56px]">
@@ -34,7 +23,7 @@ export default function HeroSection() {
           </p>
 
           <p className="mt-5 max-w-xl text-[18px] leading-relaxed text-ink/65">
-            Мы используем индивидуальный подход к каждому проекту. Создаем фото- и видеоконтент
+            Мы используем индивидуальный подход к каждому проекту. Создаем фото и видеоконтент.
             Делаем экспресс монтаж материала в день съемки. Организуем качественную и стабильную
             online трансляцию
           </p>
@@ -52,6 +41,17 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+
+      {/* Орбита-глобус: на мобиле — под кнопками в потоке, на десктопе — фоном справа */}
+      <video
+        src="/hero-orbit.mp4?v=5"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden
+        className="pointer-events-none relative left-1/2 z-0 mt-8 h-[95vw] w-[145vw] max-w-none -translate-x-1/2 object-cover object-center opacity-90 mix-blend-lighten lg:absolute lg:top-1/2 lg:left-auto lg:right-[-4%] lg:mt-0 lg:h-auto lg:w-[62vw] lg:translate-x-0 lg:object-contain lg:-translate-y-1/2"
+      />
     </section>
   );
 }

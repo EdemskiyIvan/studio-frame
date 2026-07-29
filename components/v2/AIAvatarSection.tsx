@@ -23,7 +23,8 @@ export default function AIAvatarSection() {
   return (
     <section id="ai-avatar" className="scroll-mt-20 bg-paper-soft px-5 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
-        <div className="order-last lg:order-first">
+        {/* Видео как левая колонка — только на десктопе */}
+        <div className="hidden lg:block">
           <video
             src="/ai-avatar.mp4?v=5"
             autoPlay
@@ -52,9 +53,20 @@ export default function AIAvatarSection() {
             увеличивает объёмы производства контента
           </p>
 
+          {/* Видео на мобиле — под сабтекстом */}
+          <video
+            src="/ai-avatar.mp4?v=5"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden
+            className="mt-8 aspect-[4/5] w-full rounded-2xl object-cover lg:hidden"
+          />
+
           <div className="mt-8 flex flex-col gap-4">
             {BENEFITS.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="flex items-start gap-4 rounded-lg border border-line bg-card p-4">
+              <div key={title} className="flex flex-col gap-3 rounded-lg border border-line bg-card p-4 lg:flex-row lg:items-start lg:gap-4">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent-soft text-accent">
                   <Icon size={18} />
                 </span>
@@ -68,7 +80,7 @@ export default function AIAvatarSection() {
 
           <LeadButton
             projectType="ИИ Аватар"
-            className="group mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-medium text-white transition-colors hover:bg-[#e63900]"
+            className="group mt-8 flex w-full items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-medium text-white transition-colors hover:bg-[#e63900] lg:inline-flex lg:w-auto"
           >
             Заказать ИИ-аватар
             <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" />

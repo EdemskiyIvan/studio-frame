@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Send, MessageSquare, Mail } from "lucide-react";
+
+const CONTACTS = [
+  { icon: Phone, label: "+7 993 583 23 12", href: "tel:+79935832312" },
+  { icon: Send, label: "Telegram", href: "https://t.me/telnoffmedia" },
+  { icon: MessageSquare, label: "MAX", href: "https://max.ru/telnoffmedia" },
+  { icon: Mail, label: "hello@telnoffmedia.ru", href: "mailto:hello@telnoffmedia.ru" },
+];
 
 const SERVICES = [
   { label: "Рекламная съёмка", href: "#services" },
@@ -56,11 +63,19 @@ export default function Header() {
   };
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-paper/85 backdrop-blur-md border-b border-line" : "bg-transparent"
-      }`}
-    >
+    <>
+      {/* Затемнение+блюр сайта под мобильным меню — вне header (иначе backdrop-filter header ограничивает fixed) */}
+      {open && (
+        <div
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-md lg:hidden"
+        />
+      )}
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          scrolled ? "bg-paper/85 backdrop-blur-md border-b border-line" : "bg-transparent"
+        }`}
+      >
       <div className="relative flex w-full items-center justify-between px-5 py-4 sm:px-10">
         <a href="#top" className="flex items-center gap-2.5">
           <span className="h-2 w-2 bg-accent" />
@@ -73,7 +88,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setServicesOpen((v) => !v)}
-              className="flex items-center gap-1 font-mono text-xs tracking-wide text-ink/55 uppercase transition-colors hover:text-ink"
+              className="flex items-center gap-1 font-mono text-xs tracking-wide text-ink/55 uppercase transition-colors hover:text-accent"
             >
               Услуги
               <ChevronDown
@@ -95,7 +110,7 @@ export default function Header() {
                     key={s.label}
                     href={s.href}
                     onClick={() => setServicesOpen(false)}
-                    className="block rounded-lg px-3 py-2.5 text-sm text-ink/70 transition-colors hover:bg-white/[0.05] hover:text-ink"
+                    className="block rounded-lg px-3 py-2.5 text-sm text-ink/70 transition-colors hover:bg-white/[0.05] hover:text-accent"
                   >
                     {s.label}
                   </a>
@@ -108,7 +123,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="font-mono text-xs tracking-wide text-ink/55 uppercase transition-colors hover:text-ink"
+              className="font-mono text-xs tracking-wide text-ink/55 uppercase transition-colors hover:text-accent"
             >
               {link.label}
             </a>
@@ -135,13 +150,13 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-line bg-paper px-5 pb-6 lg:hidden">
+        <div className="relative border-t border-line bg-paper px-5 pb-6 lg:hidden">
           <nav className="flex flex-col gap-1 pt-4">
             {/* Услуги — раскрывающийся список */}
             <button
               type="button"
               onClick={() => setMobileServices((v) => !v)}
-              className="flex items-center justify-between rounded-lg px-2 py-3 font-mono text-xs tracking-wide text-ink/70 uppercase hover:bg-white/[0.05] hover:text-ink"
+              className="flex items-center justify-between rounded-lg px-2 py-3 font-mono text-xs tracking-wide text-ink/70 uppercase hover:bg-white/[0.05] hover:text-accent"
             >
               Услуги
               <ChevronDown
@@ -156,7 +171,7 @@ export default function Header() {
                     key={s.label}
                     href={s.href}
                     onClick={() => setOpen(false)}
-                    className="rounded-lg px-2 py-2.5 text-sm text-ink/60 hover:text-ink"
+                    className="rounded-lg px-2 py-2.5 text-sm text-ink/60 hover:text-accent"
                   >
                     {s.label}
                   </a>
@@ -169,7 +184,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-3 font-mono text-xs tracking-wide text-ink/70 uppercase hover:bg-white/[0.05] hover:text-ink"
+                className="rounded-lg px-2 py-3 font-mono text-xs tracking-wide text-ink/70 uppercase hover:bg-white/[0.05] hover:text-accent"
               >
                 {link.label}
               </a>
@@ -180,13 +195,36 @@ export default function Header() {
                 setOpen(false);
                 openLeadForm();
               }}
-              className="mt-2 rounded-md bg-accent px-5 py-3 text-center text-sm font-medium text-white"
+              className="mt-3 rounded-md bg-accent px-5 py-3.5 text-center text-sm font-medium text-white"
             >
               Оставить заявку
             </button>
+
+            {/* Контакты */}
+            <div className="mt-4 border-t border-line pt-4">
+              <p className="mb-3 px-2 font-mono text-[11px] tracking-wide text-ink/40 uppercase">
+                Контакты
+              </p>
+              <div className="flex flex-col gap-1">
+                {CONTACTS.map(({ icon: Icon, label, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="inline-flex items-center gap-3 rounded-lg px-2 py-2.5 text-sm text-ink/70 transition-colors hover:bg-white/[0.05] hover:text-accent"
+                  >
+                    <Icon size={16} className="text-accent" />
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
           </nav>
         </div>
       )}
-    </header>
+      </header>
+    </>
   );
 }
