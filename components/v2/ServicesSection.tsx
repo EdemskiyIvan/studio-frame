@@ -17,7 +17,7 @@ const SERVICES = [
     icon: Megaphone,
     variant: "slate" as const,
     title: "Рекламная съёмка для бизнеса",
-    text: "Фото- и видеосъёмка вашего бизнеса, товаров и услуг с рекламными целями",
+    text: "Снимаем фото и видео вашего бизнеса, товаров и услуг с рекламными целями — для сайта, соцсетей, маркетплейсов и наружной рекламы",
     src: "/services/reklama.jpg",
     alt: "Рекламная студийная съёмка для бизнеса",
   },
@@ -25,7 +25,7 @@ const SERVICES = [
     icon: Mic,
     variant: "rose" as const,
     title: "Интервью для бизнеса",
-    text: "Разработка сценария, подбор эксперта и проведение интервью с целью освещения деталей вашего бизнеса",
+    text: "Разрабатываем сценарий, подбираем эксперта и проводим интервью, чтобы раскрыть детали и сильные стороны вашего бизнеса перед аудиторией",
     src: "/services/interview.jpg",
     alt: "Съёмка делового интервью с экспертом",
   },
@@ -33,7 +33,7 @@ const SERVICES = [
     icon: Users,
     variant: "gold" as const,
     title: "Бизнес-форумы",
-    text: "Организуем фото- и видеосъёмку в день мероприятия. Делаем экспресс-монтаж — отдаём готовый материал на следующий день",
+    text: "Организуем фото- и видеосъёмку в день мероприятия и делаем экспресс-монтаж — отдаём готовый материал уже на следующий день",
     src: "/services/forum.jpg",
     alt: "Съёмка бизнес-форума и делового мероприятия",
   },
@@ -41,7 +41,7 @@ const SERVICES = [
     icon: Headphones,
     variant: "ink" as const,
     title: "Подкасты",
-    text: "Студийная и выездная съёмка ваших подкастов. Монтаж готового подкаста и серии рилсов",
+    text: "Студийная и выездная съёмка ваших подкастов, монтаж готовых выпусков и нарезка серии вертикальных рилсов для соцсетей",
     src: "/services/podcast.jpg",
     alt: "Студийная съёмка видеоподкаста",
   },
@@ -49,7 +49,7 @@ const SERVICES = [
     icon: Smartphone,
     variant: "rose" as const,
     title: "Соцсети",
-    text: "Съёмка вертикальных видео (Reels, Shorts) для социальных сетей",
+    text: "Снимаем вертикальные видео (Reels, Shorts) для социальных сетей — динамичный контент, который вовлекает и работает на охваты",
     src: "/services/social.jpg",
     alt: "Съёмка вертикальных видео для соцсетей",
   },
@@ -57,7 +57,7 @@ const SERVICES = [
     icon: Radio,
     variant: "olive" as const,
     title: "Видеотрансляции",
-    text: "Проводим видеотрансляции, организуем Yandex Телемост и вебинары",
+    text: "Проводим онлайн-трансляции любой сложности, организуем Yandex Телемост и вебинары, отвечаем за стабильную картинку и звук",
     src: "/services/stream.jpg",
     alt: "Организация онлайн-видеотрансляции",
   },
@@ -65,7 +65,7 @@ const SERVICES = [
     icon: GraduationCap,
     variant: "clay" as const,
     title: "Лекции и видеоуроки",
-    text: "Снимем и смонтируем цикл лекций (уроков). Добавим визуализацию, инфографику и слайды",
+    text: "Снимаем и монтируем цикл лекций и видеоуроков, добавляем визуализацию, инфографику и слайды — готовый обучающий контент",
     src: "/services/lecture.jpg",
     alt: "Съёмка лекций и обучающих видеоуроков",
   },
@@ -73,7 +73,7 @@ const SERVICES = [
     icon: Music,
     variant: "slate" as const,
     title: "Концерты",
-    text: "Снимаем с нескольких камер, используем многоканальную звуковую запись и делаем динамичный монтаж видеоклипа",
+    text: "Снимаем с нескольких камер, ведём многоканальную запись звука и делаем динамичный монтаж концертного видеоклипа",
     src: "/services/concert.jpg",
     alt: "Многокамерная съёмка концерта",
   },
@@ -114,8 +114,10 @@ export default function ServicesSection() {
               {/* Текст под фото */}
               <div className="flex flex-1 flex-col p-5">
                 <h3 className="text-lg font-medium text-ink">{title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink/55">{text}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
+                <p className="mt-1 line-clamp-3 min-h-[4.3rem] text-sm leading-relaxed text-ink/55">
+                  {text}
+                </p>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-medium text-accent">
                   Оставить заявку
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
                 </span>
@@ -125,14 +127,14 @@ export default function ServicesSection() {
 
           {/* 9-я карточка — абстрактный CTA «не нашли услугу?» */}
           <div className="group relative flex flex-col justify-center overflow-hidden rounded-2xl border border-accent/40 bg-accent-soft p-7">
-            {/* абстрактное свечение */}
+            {/* абстрактное свечение — приглушено, ярче при наведении */}
             <div
               aria-hidden
-              className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-accent/30 blur-3xl"
+              className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-accent/30 opacity-40 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute -bottom-20 -left-10 h-52 w-52 rounded-full bg-accent/15 blur-3xl"
+              className="pointer-events-none absolute -bottom-20 -left-10 h-52 w-52 rounded-full bg-accent/15 opacity-40 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
             />
 
             <div className="relative">
