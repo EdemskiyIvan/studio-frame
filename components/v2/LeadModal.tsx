@@ -25,9 +25,12 @@ const CONTACTS = [
 export default function LeadModal() {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [projectType, setProjectType] = useState("");
 
   useEffect(() => {
-    const openHandler = () => {
+    const openHandler = (e: Event) => {
+      const pt = (e as CustomEvent<{ projectType?: string }>).detail?.projectType;
+      setProjectType(pt && PROJECT_TYPES.includes(pt) ? pt : "");
       setSubmitted(false);
       setOpen(true);
     };
@@ -116,7 +119,8 @@ export default function LeadModal() {
                 id="m-projectType"
                   name="projectType"
                   required
-                  defaultValue=""
+                  value={projectType}
+                  onChange={(e) => setProjectType(e.target.value)}
                   className="appearance-none rounded-xl border border-line bg-paper px-3.5 py-4 pr-11 text-sm font-medium text-ink outline-none transition-colors focus:border-accent"
                   style={{
                     backgroundImage:

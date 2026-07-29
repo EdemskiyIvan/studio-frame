@@ -66,7 +66,10 @@ export default function AIAvatarSection() {
             ))}
           </div>
 
-          <LeadButton className="group mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-medium text-white transition-colors hover:bg-[#e63900]">
+          <LeadButton
+            projectType="ИИ Аватар"
+            className="group mt-8 inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-medium text-white transition-colors hover:bg-[#e63900]"
+          >
             Заказать ИИ-аватар
             <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" />
           </LeadButton>

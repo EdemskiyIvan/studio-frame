@@ -17,6 +17,7 @@ const SERVICES = [
     icon: Megaphone,
     variant: "slate" as const,
     title: "Рекламная съёмка для бизнеса",
+    type: "Рекламная съёмка для бизнеса",
     text: "Снимаем фото и видео вашего бизнеса, товаров и услуг с рекламными целями — для сайта, соцсетей, маркетплейсов и наружной рекламы",
     src: "/services/reklama.jpg",
     alt: "Рекламная студийная съёмка для бизнеса",
@@ -25,6 +26,7 @@ const SERVICES = [
     icon: Mic,
     variant: "rose" as const,
     title: "Интервью для бизнеса",
+    type: "Интервью",
     text: "Разрабатываем сценарий, подбираем эксперта и проводим интервью, чтобы раскрыть детали и сильные стороны вашего бизнеса перед аудиторией",
     src: "/services/interview.jpg",
     alt: "Съёмка делового интервью с экспертом",
@@ -33,6 +35,7 @@ const SERVICES = [
     icon: Users,
     variant: "gold" as const,
     title: "Бизнес-форумы",
+    type: "Бизнес-форум / мероприятие",
     text: "Организуем фото- и видеосъёмку в день мероприятия и делаем экспресс-монтаж — отдаём готовый материал уже на следующий день",
     src: "/services/forum.jpg",
     alt: "Съёмка бизнес-форума и делового мероприятия",
@@ -41,6 +44,7 @@ const SERVICES = [
     icon: Headphones,
     variant: "ink" as const,
     title: "Подкасты",
+    type: "Видеоподкаст",
     text: "Студийная и выездная съёмка ваших подкастов, монтаж готовых выпусков и нарезка серии вертикальных рилсов для соцсетей",
     src: "/services/podcast.jpg",
     alt: "Студийная съёмка видеоподкаста",
@@ -49,6 +53,7 @@ const SERVICES = [
     icon: Smartphone,
     variant: "rose" as const,
     title: "Соцсети",
+    type: "Соцсети (Reels / Shorts)",
     text: "Снимаем вертикальные видео (Reels, Shorts) для социальных сетей — динамичный контент, который вовлекает и работает на охваты",
     src: "/services/social.jpg",
     alt: "Съёмка вертикальных видео для соцсетей",
@@ -57,6 +62,7 @@ const SERVICES = [
     icon: Radio,
     variant: "olive" as const,
     title: "Видеотрансляции",
+    type: "Видеотрансляция",
     text: "Проводим онлайн-трансляции любой сложности, организуем Yandex Телемост и вебинары, отвечаем за стабильную картинку и звук",
     src: "/services/stream.jpg",
     alt: "Организация онлайн-видеотрансляции",
@@ -65,6 +71,7 @@ const SERVICES = [
     icon: GraduationCap,
     variant: "clay" as const,
     title: "Лекции и видеоуроки",
+    type: "Лекции / видеоуроки",
     text: "Снимаем и монтируем цикл лекций и видеоуроков, добавляем визуализацию, инфографику и слайды — готовый обучающий контент",
     src: "/services/lecture.jpg",
     alt: "Съёмка лекций и обучающих видеоуроков",
@@ -73,6 +80,7 @@ const SERVICES = [
     icon: Music,
     variant: "slate" as const,
     title: "Концерты",
+    type: "Концерт",
     text: "Снимаем с нескольких камер, ведём многоканальную запись звука и делаем динамичный монтаж концертного видеоклипа",
     src: "/services/concert.jpg",
     alt: "Многокамерная съёмка концерта",
@@ -95,9 +103,10 @@ export default function ServicesSection() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map(({ variant, title, text, src, alt }) => (
+          {SERVICES.map(({ variant, title, type, text, src, alt }) => (
             <LeadButton
               key={title}
+              projectType={type}
               className="group flex w-full flex-col overflow-hidden rounded-2xl border border-line bg-card text-left transition-colors hover:border-accent/50"
             >
               {/* Крупное фото сверху — главный акцент карточки */}
