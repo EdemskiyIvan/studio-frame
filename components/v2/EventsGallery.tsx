@@ -6,7 +6,7 @@ import PlaceholderMedia from "../PlaceholderMedia";
 
 const COUNT = 15;
 const DURATION = 3800; // мс на одно фото
-const PHOTOS = Array.from({ length: COUNT }, (_, i) => `/events/event-${String(i + 1).padStart(2, "0")}.jpg`);
+const PHOTOS = Array.from({ length: COUNT }, (_, i) => `/events/photo-${String(i + 1).padStart(2, "0")}.jpg`);
 const VARIANTS = ["slate", "rose", "olive", "clay", "gold", "ink"] as const;
 
 export default function EventsGallery() {
