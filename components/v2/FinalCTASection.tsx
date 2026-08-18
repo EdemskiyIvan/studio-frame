@@ -83,7 +83,8 @@ export default function FinalCTASection() {
                 Оставить заявку
               </h3>
               <p className="-mt-1 text-sm leading-relaxed text-ink/55">
-                Ваш персональный менеджер свяжется с&nbsp;вами в&nbsp;течение 15&nbsp;минут
+                Мы свяжемся с&nbsp;вами в&nbsp;ближайшее время. Обычно&nbsp;— в&nbsp;течение
+                15&nbsp;минут в&nbsp;рабочее время
               </p>
               <input
                 id="name"
@@ -147,13 +148,13 @@ export default function FinalCTASection() {
                   className="mt-0.5 h-5 w-5 shrink-0 rounded-[5px] border border-line bg-paper bg-center bg-no-repeat transition-colors peer-checked:border-accent peer-checked:bg-accent peer-checked:bg-[length:12px] peer-checked:bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22white%22%20stroke-width=%223.5%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Cpolyline%20points=%2220%206%209%2017%204%2012%22/%3E%3C/svg%3E')]"
                 />
                 <span>
-                  Согласен с{" "}
+                  Я даю согласие на{" "}
                   <a href="#" className="text-ink/75 underline underline-offset-2 transition-colors hover:text-ink">
-                    обработкой персональных данных
+                    обработку персональных данных
                   </a>{" "}
-                  и{" "}
+                  и принимаю{" "}
                   <a href="#" className="text-ink/75 underline underline-offset-2 transition-colors hover:text-ink">
-                    политикой конфиденциальности
+                    Политику конфиденциальности
                   </a>
                 </span>
               </label>

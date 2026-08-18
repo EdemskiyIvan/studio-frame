@@ -1,27 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Play } from "lucide-react";
 
 export default function ShowreelSection() {
   const [playing, setPlaying] = useState(false);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
   const [hover, setHover] = useState(false);
-  const fieldRef = useRef<HTMLButtonElement>(null);
-  const center = useRef({ x: 0, y: 0 });
-
-  const update = (e: React.MouseEvent) => {
-    const rect = fieldRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
-
-  const enter = (e: React.MouseEvent) => {
-    const rect = fieldRef.current?.getBoundingClientRect();
-    if (rect) center.current = { x: rect.width / 2, y: rect.height / 2 };
-    setHover(true);
-    update(e);
-  };
 
   return (
     <section id="showreel" className="bg-paper-soft px-5 py-24 sm:px-8 sm:py-32">
@@ -49,11 +33,9 @@ export default function ShowreelSection() {
             </video>
           ) : (
             <button
-              ref={fieldRef}
               type="button"
               onClick={() => setPlaying(true)}
-              onMouseMove={update}
-              onMouseEnter={enter}
+              onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               className="block w-full"
               aria-label="Запустить шоурил"
@@ -71,15 +53,10 @@ export default function ShowreelSection() {
               </video>
               <span className="absolute inset-0 bg-black/25" />
 
-              {/* По центру, при наведении подпрыгивает и с инерцией бегает за курсором */}
+              {/* По центру, при наведении подпрыгивает и показывает подпись */}
               <span
                 aria-hidden
-                className="pointer-events-none absolute top-1/2 left-1/2 z-10 transition-transform duration-[450ms] ease-out will-change-transform"
-                style={{
-                  transform: hover
-                    ? `translate3d(${pos.x - center.current.x}px, ${pos.y - center.current.y}px, 0) translate(-50%, -50%)`
-                    : "translate(-50%, -50%)",
-                }}
+                className="pointer-events-none absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
               >
                 <span className="flex flex-col items-center gap-2.5">
                   <span

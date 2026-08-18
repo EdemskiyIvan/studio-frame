@@ -67,16 +67,16 @@ export default function ProcessSection() {
           {STEPS.map((step, i) => (
             <div
               key={step.title}
-              className="group grid grid-cols-[auto_1fr] gap-5 border-t border-line py-7 sm:gap-8 sm:py-8"
+              className="group grid grid-cols-[auto_1fr] items-center gap-5 border-t border-line py-7 sm:gap-8 sm:py-8"
             >
-              <div className="flex items-start">
+              <div className="flex items-center">
                 <span className="font-mono text-2xl font-semibold text-accent sm:text-3xl">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-8">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-8">
                 <h3 className="text-xl font-medium text-ink sm:w-64 sm:shrink-0">{step.title}</h3>
-                <p className="max-w-xl text-base leading-relaxed text-ink/55">{step.text}</p>
+                <p className="max-w-xl text-[18px] leading-relaxed text-ink/55">{step.text}</p>
               </div>
             </div>
           ))}
