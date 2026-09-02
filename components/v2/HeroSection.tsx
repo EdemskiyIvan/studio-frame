@@ -1,5 +1,6 @@
 import RotatingWord from "./RotatingWord";
 import LeadButton from "./LeadButton";
+import { MEDIA_BASE } from "@/lib/media";
 
 export default function HeroSection() {
   return (
@@ -44,7 +45,7 @@ export default function HeroSection() {
 
       {/* Орбита-глобус: на мобиле — под кнопками в потоке, на десктопе — фоном справа */}
       <video
-        src="/hero-orbit.mp4?v=5"
+        src={`${MEDIA_BASE}/hero-orbit.mp4`}
         autoPlay
         muted
         loop

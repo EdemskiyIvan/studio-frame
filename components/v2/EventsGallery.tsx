@@ -3,12 +3,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import PlaceholderMedia from "../PlaceholderMedia";
+import { MEDIA_BASE } from "@/lib/media";
 
 const COUNT = 15;
 const DURATION = 3800; // мс на одно фото
 // Порядок показа: концертный кадр (11) первым, дальше остальные
 const ORDER = [11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15];
-const PHOTOS = ORDER.map((n) => `/events/photo-${String(n).padStart(2, "0")}.jpg`);
+const PHOTOS = ORDER.map((n) => `${MEDIA_BASE}/events/photo-${String(n).padStart(2, "0")}.jpg`);
 const VARIANTS = ["slate", "rose", "olive", "clay", "gold", "ink"] as const;
 
 export default function EventsGallery() {

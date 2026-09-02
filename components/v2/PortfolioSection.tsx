@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Play, X, Plus } from "lucide-react";
 import PlaceholderMedia from "../PlaceholderMedia";
+import { MEDIA_BASE } from "@/lib/media";
 
 type Work = {
   slug: string;
@@ -10,8 +11,6 @@ type Work = {
   category: string;
   tag: string;
   variant: "slate" | "gold" | "rose" | "olive" | "clay" | "ink";
-  // Ссылку на видео добавим позже (хостинг): .mp4 или embed (YouTube / VK / Kinescope / Rutube)
-  video?: string;
 };
 
 const CATEGORIES = [
@@ -48,9 +47,8 @@ const WORKS: Work[] = [
 
 const STEP = 6;
 
-function isEmbed(url: string) {
-  return /youtube|youtu\.be|vk\.com|vkvideo|kinescope|rutube/.test(url);
-}
+const posterSrc = (slug: string) => `${MEDIA_BASE}/portfolio/${slug}.jpg`;
+const videoSrc = (slug: string) => `${MEDIA_BASE}/portfolio/${slug}.mp4`;
 
 export default function PortfolioSection() {
   const [cat, setCat] = useState("Все");
@@ -114,7 +112,7 @@ export default function PortfolioSection() {
             >
               <PlaceholderMedia
                 variant={w.variant}
-                src={`/portfolio/${w.slug}.jpg`}
+                src={posterSrc(w.slug)}
                 alt={w.title}
                 className="aspect-video w-full transition-transform duration-500 group-hover:scale-[1.05]"
               />
@@ -170,34 +168,16 @@ export default function PortfolioSection() {
             className="w-full max-w-5xl overflow-hidden rounded-2xl bg-black"
             onClick={(e) => e.stopPropagation()}
           >
-            {active.video ? (
-              isEmbed(active.video) ? (
-                <iframe
-                  src={active.video}
-                  title={active.title}
-                  className="aspect-video w-full"
-                  allow="autoplay; fullscreen; encrypted-media"
-                  allowFullScreen
-                />
-              ) : (
-                <video className="aspect-video w-full bg-black" controls autoPlay playsInline>
-                  <source src={active.video} type="video/mp4" />
-                </video>
-              )
-            ) : (
-              <div className="relative">
-                <PlaceholderMedia
-                  variant={active.variant}
-                  src={`/portfolio/${active.slug}.jpg`}
-                  alt={active.title}
-                  className="aspect-video w-full"
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/40 text-center">
-                  <p className="text-lg font-semibold text-white">{active.title}</p>
-                  <p className="text-sm text-white/60">{active.tag} · видео скоро</p>
-                </div>
-              </div>
-            )}
+            <video
+              key={active.slug}
+              className="aspect-video w-full bg-black"
+              controls
+              autoPlay
+              playsInline
+              poster={posterSrc(active.slug)}
+            >
+              <source src={videoSrc(active.slug)} type="video/mp4" />
+            </video>
           </div>
         </div>
       )}

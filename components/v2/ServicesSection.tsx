@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import PlaceholderMedia from "../PlaceholderMedia";
 import LeadButton from "./LeadButton";
+import { MEDIA_BASE } from "@/lib/media";
 
 const SERVICES = [
   {
@@ -19,7 +20,7 @@ const SERVICES = [
     title: "Рекламная съёмка для бизнеса",
     type: "Рекламная съёмка для бизнеса",
     text: "Снимаем фото и видео вашего бизнеса, товаров и услуг с рекламными целями — для сайта, соцсетей, маркетплейсов и наружной рекламы",
-    src: "/services/reklama.jpg",
+    src: `${MEDIA_BASE}/services/reklama.jpg`,
     alt: "Рекламная студийная съёмка для бизнеса",
   },
   {
@@ -28,7 +29,7 @@ const SERVICES = [
     title: "Интервью для бизнеса",
     type: "Интервью",
     text: "Разрабатываем сценарий, подбираем эксперта и проводим интервью, чтобы раскрыть детали и сильные стороны вашего бизнеса перед аудиторией",
-    src: "/services/interview.jpg",
+    src: `${MEDIA_BASE}/services/interview.jpg`,
     alt: "Съёмка делового интервью с экспертом",
   },
   {
@@ -37,7 +38,7 @@ const SERVICES = [
     title: "Бизнес-форумы",
     type: "Бизнес-форум / мероприятие",
     text: "Организуем фото- и видеосъёмку в день мероприятия и делаем экспресс-монтаж — отдаём готовый материал уже на следующий день",
-    src: "/services/forum.jpg",
+    src: `${MEDIA_BASE}/services/forum.jpg`,
     alt: "Съёмка бизнес-форума и делового мероприятия",
   },
   {
@@ -46,7 +47,7 @@ const SERVICES = [
     title: "Подкасты",
     type: "Видеоподкаст",
     text: "Студийная и выездная съёмка ваших подкастов, монтаж готовых выпусков и нарезка серии вертикальных рилсов для соцсетей",
-    src: "/services/podcast.jpg",
+    src: `${MEDIA_BASE}/services/podcast.jpg`,
     alt: "Студийная съёмка видеоподкаста",
   },
   {
@@ -55,7 +56,7 @@ const SERVICES = [
     title: "Соцсети",
     type: "Соцсети (Reels / Shorts)",
     text: "Снимаем вертикальные видео (Reels, Shorts) для социальных сетей — динамичный контент, который вовлекает и работает на охваты",
-    src: "/services/social.jpg",
+    src: `${MEDIA_BASE}/services/social.jpg`,
     alt: "Съёмка вертикальных видео для соцсетей",
   },
   {
@@ -64,7 +65,7 @@ const SERVICES = [
     title: "Видеотрансляции",
     type: "Видеотрансляция",
     text: "Проводим онлайн-трансляции любой сложности, организуем Yandex Телемост и вебинары, отвечаем за стабильную картинку и звук",
-    src: "/services/stream.jpg",
+    src: `${MEDIA_BASE}/services/stream.jpg`,
     alt: "Организация онлайн-видеотрансляции",
   },
   {
@@ -73,7 +74,7 @@ const SERVICES = [
     title: "Лекции и видеоуроки",
     type: "Лекции / видеоуроки",
     text: "Снимаем и монтируем цикл лекций и видеоуроков, добавляем визуализацию, инфографику и слайды — готовый обучающий контент",
-    src: "/services/lecture.jpg",
+    src: `${MEDIA_BASE}/services/lecture.jpg`,
     alt: "Съёмка лекций и обучающих видеоуроков",
   },
   {
@@ -82,7 +83,7 @@ const SERVICES = [
     title: "Концерты",
     type: "Концерт",
     text: "Снимаем с нескольких камер, ведём многоканальную запись звука и делаем динамичный монтаж концертного видеоклипа",
-    src: "/services/concert.jpg",
+    src: `${MEDIA_BASE}/services/concert.jpg`,
     alt: "Многокамерная съёмка концерта",
   },
 ];

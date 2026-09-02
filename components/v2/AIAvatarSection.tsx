@@ -1,5 +1,6 @@
 import { Sparkles, ArrowRight, Repeat, Clock, TrendingUp } from "lucide-react";
 import LeadButton from "./LeadButton";
+import { MEDIA_BASE } from "@/lib/media";
 
 const BENEFITS = [
   {
@@ -26,7 +27,7 @@ export default function AIAvatarSection() {
         {/* Видео как левая колонка — только на десктопе */}
         <div className="hidden lg:block">
           <video
-            src="/ai-avatar.mp4?v=5"
+            src={`${MEDIA_BASE}/ai-avatar.mp4`}
             autoPlay
             muted
             loop
@@ -55,7 +56,7 @@ export default function AIAvatarSection() {
 
           {/* Видео на мобиле — под сабтекстом */}
           <video
-            src="/ai-avatar.mp4?v=5"
+            src={`${MEDIA_BASE}/ai-avatar.mp4`}
             autoPlay
             muted
             loop

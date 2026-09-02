@@ -26,6 +26,8 @@ export default function LeadModal() {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [projectType, setProjectType] = useState("");
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const openHandler = (e: Event) => {
@@ -51,9 +53,29 @@ export default function LeadModal() {
 
   if (!open) return null;
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError(false);
+    const data = new FormData(e.currentTarget);
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          contact: data.get("contact"),
+          projectType: data.get("projectType"),
+          comment: data.get("comment"),
+        }),
+      });
+      if (!res.ok) throw new Error("send_failed");
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -171,11 +193,18 @@ export default function LeadModal() {
                 </span>
               </label>
 
+              {error && (
+                <p className="text-sm text-red-400">
+                  Не получилось отправить, попробуйте ещё раз или напишите нам напрямую
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="mt-1 rounded-md bg-accent px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-[#e63900]"
+                disabled={sending}
+                className="mt-1 rounded-md bg-accent px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-[#e63900] disabled:opacity-60"
               >
-                Отправить заявку
+                {sending ? "Отправляем…" : "Отправить заявку"}
               </button>
             </form>
 

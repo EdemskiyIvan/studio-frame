@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Play } from "lucide-react";
+import { MEDIA_BASE } from "@/lib/media";
 
 export default function ShowreelSection() {
   const [playing, setPlaying] = useState(false);
@@ -26,9 +27,9 @@ export default function ShowreelSection() {
               controls
               autoPlay
               playsInline
-              poster="/showreel-cover.jpg"
+              poster={`${MEDIA_BASE}/showreel-cover.jpg`}
             >
-              <source src="/showreel.mp4" type="video/mp4" />
+              <source src={`${MEDIA_BASE}/showreel.mp4`} type="video/mp4" />
               Ваш браузер не поддерживает воспроизведение видео
             </video>
           ) : (
@@ -47,9 +48,9 @@ export default function ShowreelSection() {
                 muted
                 loop
                 playsInline
-                poster="/showreel-cover.jpg"
+                poster={`${MEDIA_BASE}/showreel-cover.jpg`}
               >
-                <source src="/showreel-preview.mp4" type="video/mp4" />
+                <source src={`${MEDIA_BASE}/showreel-preview.mp4`} type="video/mp4" />
               </video>
               <span className="absolute inset-0 bg-black/25" />
 
