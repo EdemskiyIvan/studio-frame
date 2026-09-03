@@ -171,11 +171,11 @@ export default function FinalCTASection() {
                 />
                 <span>
                   Я даю согласие на{" "}
-                  <a href="#" className="text-ink/75 underline underline-offset-2 transition-colors hover:text-ink">
+                  <a href="/consent" target="_blank" rel="noopener noreferrer" className="text-ink/75 underline underline-offset-2 transition-colors hover:text-ink">
                     обработку персональных данных
                   </a>{" "}
                   и принимаю{" "}
-                  <a href="#" className="text-ink/75 underline underline-offset-2 transition-colors hover:text-ink">
+                  <a href="/policy" target="_blank" rel="noopener noreferrer" className="text-ink/75 underline underline-offset-2 transition-colors hover:text-ink">
                     Политику конфиденциальности
                   </a>
                 </span>

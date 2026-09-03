@@ -81,10 +81,10 @@ export default function Footer() {
             © {new Date().getFullYear()} Telnoff Media PROduction
           </p>
           <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-2">
-            <a href="#" className="text-xs text-ink/40 transition-colors hover:text-accent">
+            <a href="/consent" className="text-xs text-ink/40 transition-colors hover:text-accent">
               Обработка персональных данных
             </a>
-            <a href="#" className="text-xs text-ink/40 transition-colors hover:text-accent">
+            <a href="/policy" className="text-xs text-ink/40 transition-colors hover:text-accent">
               Политика конфиденциальности
             </a>
             <a
