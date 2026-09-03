@@ -9,9 +9,28 @@ export default function HeroSection() {
       className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-5 pt-28 pb-14 sm:px-8"
       style={{ backgroundColor: "#141414" }}
     >
-      {/* Фоновый объём: только тёплое свечение, без линий и зерна — чтобы не было
-          артефактов рендеринга в разных браузерах */}
+      {/* Фоновый объём: тонкие вертикальные линии + тёплое свечение */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        {/* Линии на весь блок, без CSS-маски (mask-image ненадёжен между браузерами) */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 132px)",
+          }}
+        />
+
+        {/* Затухание линий к краям — обычная заливка цветом фона поверх,
+            без masking, поэтому рендерится одинаково везде */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 65% at 22% 50%, transparent 0%, transparent 35%, #141414 85%)",
+          }}
+        />
+
+        {/* Тёплое свечение под заголовком — даёт глубину, цвет фирменный */}
         <div
           className="absolute inset-0"
           style={{
