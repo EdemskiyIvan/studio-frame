@@ -9,6 +9,18 @@ export default function HeroSection() {
       className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-5 pt-28 pb-14 sm:px-8"
       style={{ backgroundColor: "#141414" }}
     >
+      {/* Фоновый объём: только тёплое свечение, без линий и зерна — чтобы не было
+          артефактов рендеринга в разных браузерах */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 55% 60% at 12% 88%, rgba(255,65,0,0.10) 0%, rgba(255,65,0,0.035) 40%, transparent 75%)",
+          }}
+        />
+      </div>
+
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="max-w-2xl">
           <h1 className="text-4xl leading-[1.12] font-bold tracking-[-0.03em] text-ink sm:text-5xl lg:text-[56px]">
