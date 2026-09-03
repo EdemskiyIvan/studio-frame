@@ -9,33 +9,39 @@ export default function HeroSection() {
       className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-5 pt-28 pb-14 sm:px-8"
       style={{ backgroundColor: "#141414" }}
     >
-      {/* Фоновый объём: тонкие вертикальные линии + тёплое свечение */}
+      {/* Фоновый объём: линии + мягкое свечение + зерно */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        {/* Линии на весь блок, без CSS-маски (mask-image ненадёжен между браузерами) */}
+        {/* Тонкие вертикальные линии. Маска одна, радиальная — растворяется во все
+            стороны плавно, без стыков и видимых границ */}
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 132px)",
+              "repeating-linear-gradient(90deg, rgba(255,255,255,0.045) 0px, rgba(255,255,255,0.045) 1px, transparent 1px, transparent 132px)",
+            maskImage:
+              "radial-gradient(ellipse 70% 65% at 22% 50%, #000 0%, rgba(0,0,0,0.55) 45%, transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 70% 65% at 22% 50%, #000 0%, rgba(0,0,0,0.55) 45%, transparent 100%)",
           }}
         />
 
-        {/* Затухание линий к краям — обычная заливка цветом фона поверх,
-            без masking, поэтому рендерится одинаково везде */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 65% at 22% 50%, transparent 0%, transparent 35%, #141414 85%)",
-          }}
-        />
-
-        {/* Тёплое свечение под заголовком — даёт глубину, цвет фирменный */}
+        {/* Тёплое свечение под заголовком — даёт глубину, цвет фирменный.
+            Растянуто на весь блок, чтобы край размытия не читался */}
         <div
           className="absolute inset-0"
           style={{
             background:
               "radial-gradient(ellipse 55% 60% at 12% 88%, rgba(255,65,0,0.10) 0%, rgba(255,65,0,0.035) 40%, transparent 75%)",
+          }}
+        />
+
+        {/* Зерно. На почти чёрном фоне плавные градиенты не помещаются в 8 бит
+            и ложатся видимыми ступенями — шум их разбивает и даёт фактуру */}
+        <div
+          className="absolute inset-0 opacity-[0.16] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E\")",
           }}
         />
       </div>
