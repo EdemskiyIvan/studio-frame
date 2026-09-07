@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import { FAQ } from "@/lib/faq";
 import "./globals.css";
 
 const inter = Inter({
@@ -13,17 +14,75 @@ const geistMono = Geist_Mono({
   subsets: ["latin", "cyrillic"],
 });
 
+const OG_IMAGE = "https://s3.twcstorage.ru/d1640567-06d0-43f0-a0c8-bc0cd0a58287/showreel-cover.jpg";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://telnoffmedia.ru"),
   title: "Telnoff Media PROduction — профессиональная видеосъёмка для брендов, бизнеса и экспертов",
   description:
     "Видео- и фотопродакшн: рекламная съёмка, интервью, бизнес-форумы, видеотрансляции, лекции, подкасты, концерты и ИИ-аватары. Экспресс-монтаж в день съёмки, стабильные трансляции. СПб, Москва.",
+  keywords: [
+    "видеопродакшн",
+    "видеосъёмка СПб",
+    "видеосъёмка Москва",
+    "рекламная съёмка",
+    "видеосъёмка мероприятий",
+    "видеотрансляция",
+    "корпоративное видео",
+    "ИИ аватар",
+    "видеопродакшн для бизнеса",
+  ],
+  robots: { index: true, follow: true },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Telnoff Media PROduction — видеопродакшн полного цикла",
     description:
       "Профессиональная видеосъёмка для брендов, бизнеса и экспертов. Монтаж в день съёмки, стабильные онлайн-трансляции, ИИ-аватары.",
+    url: "https://telnoffmedia.ru",
+    siteName: "Telnoff Media PROduction",
     locale: "ru_RU",
     type: "website",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1280,
+        height: 720,
+        alt: "Telnoff Media PROduction — видеопродакшн полного цикла",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Telnoff Media PROduction — видеопродакшн полного цикла",
+    description:
+      "Профессиональная видеосъёмка для брендов, бизнеса и экспертов. Монтаж в день съёмки, стабильные онлайн-трансляции, ИИ-аватары.",
+    images: [OG_IMAGE],
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Telnoff Media PROduction",
+  description:
+    "Видео- и фотопродакшн: рекламная съёмка, интервью, бизнес-форумы, видеотрансляции, лекции, подкасты, концерты и ИИ-аватары.",
+  url: "https://telnoffmedia.ru",
+  image: OG_IMAGE,
+  telephone: "+7-993-583-23-12",
+  areaServed: ["Санкт-Петербург", "Москва"],
+  sameAs: ["https://t.me/telnoffmedia", "https://max.ru/telnoffmedia"],
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
 };
 
 export default function RootLayout({
@@ -34,6 +93,18 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${inter.variable} ${geistMono.variable} h-full`}>
       <body className="min-h-full antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         {children}
 
         {/* Yandex.Metrika counter */}
