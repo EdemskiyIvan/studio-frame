@@ -70,9 +70,9 @@ const organizationJsonLd = {
     "Видео- и фотопродакшн: рекламная съёмка, интервью, бизнес-форумы, видеотрансляции, лекции, подкасты, концерты и ИИ-аватары.",
   url: "https://telnoffmedia.ru",
   image: OG_IMAGE,
-  telephone: "+7-993-583-23-12",
+  telephone: "+7-999-238-69-99",
   areaServed: ["Санкт-Петербург", "Москва"],
-  sameAs: ["https://t.me/telnoffmedia", "https://max.ru/telnoffmedia"],
+  sameAs: ["https://t.me/maximmediapro", "https://max.ru/telnoffmedia"],
 };
 
 const faqJsonLd = {

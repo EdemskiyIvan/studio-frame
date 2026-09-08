@@ -60,14 +60,14 @@ export default function FinalCTASection() {
 
           <div className="mt-8 flex flex-nowrap gap-2 sm:flex-wrap sm:gap-3">
             <a
-              href="tel:+79935832312"
+              href="tel:+79992386999"
               className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-line bg-card px-3 py-3.5 text-sm font-medium text-ink/80 transition-colors hover:border-accent/50 hover:text-ink sm:flex-none sm:px-5"
             >
               <Phone size={16} className="text-accent" />
               Позвонить
             </a>
             <a
-              href="https://t.me/telnoffmedia"
+              href="https://t.me/maximmediapro"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-line bg-card px-3 py-3.5 text-sm font-medium text-ink/80 transition-colors hover:border-accent/50 hover:text-ink sm:flex-none sm:px-5"

@@ -32,7 +32,7 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.LEAD_EMAIL_TO ?? "hello@telnoffmedia.ru";
+  const to = process.env.LEAD_EMAIL_TO ?? "telnoffmedia@gmail.com";
   const from = process.env.RESEND_FROM_EMAIL ?? "Заявки с сайта <onboarding@resend.dev>";
 
   if (!apiKey) {

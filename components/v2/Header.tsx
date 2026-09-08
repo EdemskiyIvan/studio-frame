@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronDown, Phone, Send, MessageSquare, Mail } from "lucide-react";
 
 const CONTACTS = [
-  { icon: Phone, label: "+7 993 583 23 12", href: "tel:+79935832312" },
-  { icon: Send, label: "Telegram", href: "https://t.me/telnoffmedia" },
+  { icon: Phone, label: "+7 999 238 69 99", href: "tel:+79992386999" },
+  { icon: Send, label: "Telegram", href: "https://t.me/maximmediapro" },
   { icon: MessageSquare, label: "MAX", href: "https://max.ru/telnoffmedia" },
-  { icon: Mail, label: "hello@telnoffmedia.ru", href: "mailto:hello@telnoffmedia.ru" },
+  { icon: Mail, label: "telnoffmedia@gmail.com", href: "mailto:telnoffmedia@gmail.com" },
 ];
 
 const SERVICES = [

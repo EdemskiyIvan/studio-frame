@@ -17,8 +17,8 @@ const PROJECT_TYPES = [
 ];
 
 const CONTACTS = [
-  { icon: Phone, label: "Позвонить", href: "tel:+79935832312" },
-  { icon: Send, label: "Telegram", href: "https://t.me/telnoffmedia" },
+  { icon: Phone, label: "Позвонить", href: "tel:+79992386999" },
+  { icon: Send, label: "Telegram", href: "https://t.me/maximmediapro" },
   { icon: MessageSquare, label: "MAX", href: "https://max.ru/telnoffmedia" },
 ];
 

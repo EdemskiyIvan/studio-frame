@@ -1,9 +1,9 @@
 import { Mail, MessageSquare, Send } from "lucide-react";
 
 const MESSENGERS = [
-  { icon: Send, label: "Telegram", href: "https://t.me/telnoffmedia" },
+  { icon: Send, label: "Telegram", href: "https://t.me/maximmediapro" },
   { icon: MessageSquare, label: "MAX", href: "https://max.ru/telnoffmedia" },
-  { icon: Mail, label: "hello@telnoffmedia.ru", href: "mailto:hello@telnoffmedia.ru" },
+  { icon: Mail, label: "telnoffmedia@gmail.com", href: "mailto:telnoffmedia@gmail.com" },
 ];
 
 export default function Footer() {
@@ -28,10 +28,10 @@ export default function Footer() {
           {/* Контакты */}
           <div className="lg:text-right">
             <a
-              href="tel:+79935832312"
+              href="tel:+79992386999"
               className="block text-3xl font-semibold tracking-tight text-ink transition-colors hover:text-accent sm:text-4xl"
             >
-              +7 993 583 23 12
+              +7 999 238 69 99
             </a>
 
             <div className="mt-6 flex flex-wrap gap-3 lg:justify-end">
