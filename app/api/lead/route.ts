@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendTelegramMessage } from "@/lib/telegram";
 
 type LeadPayload = {
   name?: string;
@@ -51,6 +52,22 @@ export async function POST(request: Request) {
     ${comment ? `<p><b>Комментарий:</b> ${escapeHtml(comment)}</p>` : ""}
   `;
 
+  // Дубль в Telegram запускаем сразу и НЕ ждём: канал вспомогательный, он не должен
+  // ни задерживать ответ пользователю, ни зависеть от результата отправки почты.
+  // Сервер живёт постоянным процессом (standalone), поэтому промис завершится сам.
+  const telegramText = [
+    "🎬 Новая заявка с сайта",
+    "",
+    `Имя: ${name}`,
+    `Контакт: ${contact}`,
+    `Тип проекта: ${projectType}`,
+    comment ? `Комментарий: ${comment}` : null,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  void sendTelegramMessage(telegramText);
+
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -70,36 +87,6 @@ export async function POST(request: Request) {
     const errText = await res.text();
     console.error("Resend error:", res.status, errText);
     return NextResponse.json({ error: "send_failed" }, { status: 502 });
-  }
-
-  // Дубль в Telegram — best-effort, не должен ронять основной канал (почту)
-  const tgToken = process.env.TELEGRAM_BOT_TOKEN;
-  const tgChatId = process.env.TELEGRAM_CHAT_ID;
-  if (tgToken && tgChatId) {
-    try {
-      const text = [
-        "🎬 Новая заявка с сайта",
-        "",
-        `Имя: ${name}`,
-        `Контакт: ${contact}`,
-        `Тип проекта: ${projectType}`,
-        comment ? `Комментарий: ${comment}` : null,
-      ]
-        .filter(Boolean)
-        .join("\n");
-
-      const tgRes = await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: tgChatId, text }),
-        signal: AbortSignal.timeout(4000),
-      });
-      if (!tgRes.ok) {
-        console.error("Telegram notify error:", tgRes.status, await tgRes.text());
-      }
-    } catch (e) {
-      console.error("Telegram notify failed:", e);
-    }
   }
 
   return NextResponse.json({ ok: true });
