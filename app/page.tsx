@@ -11,6 +11,7 @@ import FAQSection from "@/components/v2/FAQSection";
 import FinalCTASection from "@/components/v2/FinalCTASection";
 import Footer from "@/components/v2/Footer";
 import LeadModal from "@/components/v2/LeadModal";
+import ContactWidget from "@/components/v2/ContactWidget";
 
 const display = Montserrat({ subsets: ["latin", "cyrillic"], variable: "--font-display" });
 const body = Golos_Text({ subsets: ["latin", "cyrillic"], variable: "--font-body" });
@@ -32,6 +33,7 @@ export default function Home() {
       </main>
       <Footer />
       <LeadModal />
+      <ContactWidget />
     </div>
   );
 }
