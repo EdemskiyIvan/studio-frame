@@ -14,6 +14,8 @@ function escapeHtml(value: string) {
     .replace(/>/g, "&gt;");
 }
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function POST(request: Request) {
   let body: LeadPayload;
   try {
@@ -58,7 +60,7 @@ export async function POST(request: Request) {
     body: JSON.stringify({
       from,
       to: [to, managerEmail],
-      reply_to: contact.includes("@") ? contact : undefined,
+      reply_to: EMAIL_RE.test(contact) ? contact : undefined,
       subject: `Заявка с сайта: ${projectType}`,
       html,
     }),
@@ -90,6 +92,7 @@ export async function POST(request: Request) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ chat_id: tgChatId, text }),
+        signal: AbortSignal.timeout(4000),
       });
       if (!tgRes.ok) {
         console.error("Telegram notify error:", tgRes.status, await tgRes.text());
