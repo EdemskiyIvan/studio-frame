@@ -75,5 +75,12 @@ export async function GET(request: Request) {
   // 5. Контроль: работает ли исходящая сеть в принципе
   result.control = await httpProbe("https://api.resend.com/domains");
 
+  // 6. Кандидаты в релей — достижимы ли они отсюда
+  result.relay_candidates = await Promise.all([
+    httpProbe("https://studio-frame-sage.vercel.app"),
+    httpProbe("https://vercel.com"),
+    httpProbe("https://api.github.com"),
+  ]);
+
   return NextResponse.json(result);
 }
