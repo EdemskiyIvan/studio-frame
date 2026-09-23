@@ -33,6 +33,7 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.LEAD_EMAIL_TO ?? "telnoffmedia@gmail.com";
+  const managerEmail = process.env.LEAD_EMAIL_MANAGER ?? "A0933338@yandex.ru";
   const from = process.env.RESEND_FROM_EMAIL ?? "Заявки с сайта <onboarding@resend.dev>";
 
   if (!apiKey) {
@@ -56,7 +57,7 @@ export async function POST(request: Request) {
     },
     body: JSON.stringify({
       from,
-      to,
+      to: [to, managerEmail],
       reply_to: contact.includes("@") ? contact : undefined,
       subject: `Заявка с сайта: ${projectType}`,
       html,
@@ -67,6 +68,35 @@ export async function POST(request: Request) {
     const errText = await res.text();
     console.error("Resend error:", res.status, errText);
     return NextResponse.json({ error: "send_failed" }, { status: 502 });
+  }
+
+  // Дубль в Telegram — best-effort, не должен ронять основной канал (почту)
+  const tgToken = process.env.TELEGRAM_BOT_TOKEN;
+  const tgChatId = process.env.TELEGRAM_CHAT_ID;
+  if (tgToken && tgChatId) {
+    try {
+      const text = [
+        "🎬 Новая заявка с сайта",
+        "",
+        `Имя: ${name}`,
+        `Контакт: ${contact}`,
+        `Тип проекта: ${projectType}`,
+        comment ? `Комментарий: ${comment}` : null,
+      ]
+        .filter(Boolean)
+        .join("\n");
+
+      const tgRes = await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: tgChatId, text }),
+      });
+      if (!tgRes.ok) {
+        console.error("Telegram notify error:", tgRes.status, await tgRes.text());
+      }
+    } catch (e) {
+      console.error("Telegram notify failed:", e);
+    }
   }
 
   return NextResponse.json({ ok: true });
