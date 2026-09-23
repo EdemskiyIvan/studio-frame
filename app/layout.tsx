@@ -72,7 +72,10 @@ const organizationJsonLd = {
   image: OG_IMAGE,
   telephone: "+7-999-238-69-99",
   areaServed: ["Санкт-Петербург", "Москва"],
-  sameAs: ["https://t.me/maximmediapro", "https://max.ru/telnoffmedia"],
+  sameAs: [
+    "https://t.me/maximmediapro",
+    "https://max.ru/u/f9LHodD0cOITkS3qobfW-4jlz82rVRDmaHDtjbD_4EYb57J0mpz0xIXQbmA",
+  ],
 };
 
 const faqJsonLd = {

@@ -76,7 +76,7 @@ export default function FinalCTASection() {
               Telegram
             </a>
             <a
-              href="https://max.ru/telnoffmedia"
+              href="https://max.ru/u/f9LHodD0cOITkS3qobfW-4jlz82rVRDmaHDtjbD_4EYb57J0mpz0xIXQbmA"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-line bg-card px-3 py-3.5 text-sm font-medium text-ink/80 transition-colors hover:border-accent/50 hover:text-ink sm:flex-none sm:px-5"

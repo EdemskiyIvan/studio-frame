@@ -19,7 +19,7 @@ const PROJECT_TYPES = [
 const CONTACTS = [
   { icon: Phone, label: "Позвонить", href: "tel:+79992386999" },
   { icon: Send, label: "Telegram", href: "https://t.me/maximmediapro" },
-  { icon: MessageSquare, label: "MAX", href: "https://max.ru/telnoffmedia" },
+  { icon: MessageSquare, label: "MAX", href: "https://max.ru/u/f9LHodD0cOITkS3qobfW-4jlz82rVRDmaHDtjbD_4EYb57J0mpz0xIXQbmA" },
 ];
 
 export default function LeadModal() {

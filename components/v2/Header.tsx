@@ -6,7 +6,7 @@ import { Menu, X, ChevronDown, Phone, Send, MessageSquare, Mail } from "lucide-r
 const CONTACTS = [
   { icon: Phone, label: "+7 999 238 69 99", href: "tel:+79992386999" },
   { icon: Send, label: "Telegram", href: "https://t.me/maximmediapro" },
-  { icon: MessageSquare, label: "MAX", href: "https://max.ru/telnoffmedia" },
+  { icon: MessageSquare, label: "MAX", href: "https://max.ru/u/f9LHodD0cOITkS3qobfW-4jlz82rVRDmaHDtjbD_4EYb57J0mpz0xIXQbmA" },
   { icon: Mail, label: "telnoffmedia@gmail.com", href: "mailto:telnoffmedia@gmail.com" },
 ];
 
