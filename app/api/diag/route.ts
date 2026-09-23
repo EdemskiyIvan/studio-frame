@@ -21,6 +21,21 @@ function tcpProbe(host: string, family: 4 | 6, timeoutMs = 4000) {
   });
 }
 
+function tcpProbePort(host: string, port: number, family: 4 | 6, timeoutMs = 4000) {
+  return new Promise<{ target: string; ok: boolean; ms: number; error?: string }>((resolve) => {
+    const started = Date.now();
+    const socket = net.connect({ host, port, family });
+    const finish = (ok: boolean, error?: string) => {
+      socket.destroy();
+      resolve({ target: `${host}:${port}`, ok, ms: Date.now() - started, error });
+    };
+    socket.setTimeout(timeoutMs);
+    socket.once("connect", () => finish(true));
+    socket.once("timeout", () => finish(false, "timeout"));
+    socket.once("error", (e) => finish(false, (e as Error).message));
+  });
+}
+
 async function httpProbe(url: string, timeoutMs = 5000) {
   const started = Date.now();
   try {
@@ -77,9 +92,17 @@ export async function GET(request: Request) {
 
   // 6. Кандидаты в релей — достижимы ли они отсюда
   result.relay_candidates = await Promise.all([
-    httpProbe("https://studio-frame-sage.vercel.app"),
-    httpProbe("https://vercel.com"),
     httpProbe("https://api.github.com"),
+  ]);
+
+  // 7. Другие точки входа Telegram: вдруг блокируется только конкретный IP/порт
+  result.telegram_alt = await Promise.all([
+    tcpProbe("149.154.167.220", 4), // исторический IP Bot API
+    tcpProbe("149.154.175.50", 4),
+    tcpProbe("91.108.4.5", 4),
+    tcpProbePort("api.telegram.org", 80, 4),
+    tcpProbePort("api.telegram.org", 88, 4),
+    tcpProbePort("api.telegram.org", 8443, 4),
   ]);
 
   return NextResponse.json(result);
