@@ -5,10 +5,10 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import PlaceholderMedia from "../PlaceholderMedia";
 import { MEDIA_BASE } from "@/lib/media";
 
-const COUNT = 15;
+const COUNT = 24;
 const DURATION = 3800; // мс на одно фото
-// Порядок показа: концертный кадр (11) первым, дальше остальные
-const ORDER = [11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15];
+// Порядок показа: концертный кадр (11) первым, дальше остальные, новые — в конец
+const ORDER = [11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 const PHOTOS = ORDER.map((n) => `${MEDIA_BASE}/events/photo-${String(n).padStart(2, "0")}.jpg`);
 const VARIANTS = ["slate", "rose", "olive", "clay", "gold", "ink"] as const;
 
